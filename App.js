@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView, ImageBackground } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Expo from 'expo';
+import { stackNavigator } from 'react-navigation';
+
 
 export default class App extends React.Component {
 	constructor(props) {
