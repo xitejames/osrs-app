@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import cUser  from '../components/CurrentUser';
-import miningXP from '../components/Skills/Mining';
+import Levels from '../components/levelbrackets';
+
 
 
 
@@ -28,7 +29,20 @@ export default class MiningScreen extends React.Component {
         this.state.currentExperience = cUser.findSkillExperience(15);
         this.state.levelToGet = cUser.findSkillLevel(15);
         this.state.experianceToGet = cUser.findSkillExperience(15);
+        this.updateSkill();
 
+    }
+
+    updateSkill(){
+        Levels.setCurrentSkill('Mining');
+    }
+
+    resetAll(){
+        this.state.currentLevel = cUser.findSkillLevel(15);
+        this.state.currentExperience = cUser.findSkillExperience(15);
+        this.state.levelToGet = cUser.findSkillLevel(15);
+        this.state.experianceToGet = cUser.findSkillExperience(15);
+        this.updateSkill();
     }
 
     render() {
@@ -39,16 +53,21 @@ export default class MiningScreen extends React.Component {
                     <View>
                         <Text>Mining level: </Text>
                         <TextInput
-                        placeholderTextColor='grey'
-                        placeholder={this.state.currentLevel}
+                        onChangeText={(currentLevel) => {
+							this.setState({ currentLevel });
+                            this.setState({ currentExperience: Levels.findOverallXpByLevel(currentLevel) })
+
+						}}
                         value={this.state.currentLevel}
                         ></TextInput>
                     </View>
                     <View >
                         <Text>Mining experience: </Text>
                         <TextInput
-                        placeholderTextColor='grey'
-                        placeholder={this.state.currentExperience}
+                        onChangeText={(currentExperience) => {
+							this.setState({ currentExperience });
+                            this.setState({ currentLevel: Levels.findOverallLevelByXp(currentExperience) })
+						}}
                         value={this.state.currentExperience}
                         ></TextInput>
                     </View>
@@ -57,9 +76,8 @@ export default class MiningScreen extends React.Component {
                         <TextInput
                         onChangeText={(levelToGet) => {
 							this.setState({ levelToGet });
+                            this.setState({ experianceToGet: Levels.findOverallXpByLevel(levelToGet) })
 						}}
-                        placeholderTextColor='grey'
-                        placeholder={this.state.levelToGet}
                         value={this.state.levelToGet}
                         ></TextInput>                    
                     </View>
@@ -68,177 +86,147 @@ export default class MiningScreen extends React.Component {
                         <TextInput
                         onChangeText={(experianceToGet) => {
 							this.setState({ experianceToGet });
+                            this.setState({ levelToGet: Levels.findOverallLevelByXp(experianceToGet) })
 						}}
-                        placeholderTextColor='grey'
-                        placeholder={this.state.experianceToGet}
                         value={this.state.experianceToGet}
                         ></TextInput>
                     </View>
                     </View>
 
                 <ScrollView> 
-                    <View styles={styles.statBar}>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Clay </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Clay')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Clay')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Clay'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Rune essence </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Rune essence')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Rune essence')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Rune essence'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Copper </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Copper')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Copper')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Copper'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                    </View>
-                    <View styles={styles.statBar}>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Tin </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Tin')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Tin')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Tin'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Limetone </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Limetone')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Limetone')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Limetone'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Iron </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Iron')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Iron')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Iron'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                    </View>
-                    <View styles={styles.statBar}>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Silver </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Silver')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Silver')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Silver'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Pure essence </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Pure essence')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Pure essence')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Pure essence'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Coal </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Coal')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Coal')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Coal'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                    </View>
-                    <View styles={styles.statBar}>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Sandstone (5kg) </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Sandstone (5kg)')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Sandstone (5kg)')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Sandstone (5kg)'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Sandstone (10kg) </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Sandstone (10kg)')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Sandstone (10kg)')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Sandstone (10kg)'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Gem mining </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Gem mining')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Gem mining')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Gem mining'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                    </View>
-                    <View styles={styles.statBar}>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Gold </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Gold')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Gold')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Gold'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Granite (500g) </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Granite (500g)')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Granite (500g)')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Granite (500g)'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Granite (2kg) </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Granite (2kg)')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Granite (2kg)')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Granite (2kg)'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                    </View>                    
-                    <View styles={styles.statBar}>
+                
                     <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Granite (5kg) </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Granite (5kg)')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Granite (5kg)')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Granite (5kg)'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Mithril </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Mithril')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Mithril')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Mithril'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Adamanite </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Adamanite')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Adamanite')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Adamanite'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
+                        <Text style={styles.statText}>Name: Clay </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Clay')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Clay')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Clay'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                     </View>
-                    <View styles={styles.statBar}>                    
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Runeite </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Runeite')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Runeite')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Runeite'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
-                        <View style={styles.statItem}>
-                            <Text style={styles.statText}>Name: Amethyst </Text>
-                            <Text style={styles.statText}>Level to mine: {miningXP.findLevelByName('Amethyst')}</Text>
-                            <Text style={styles.statText}>Experience: {miningXP.findXpByName('Amethyst')}</Text>
-                            <Text style={styles.statText}>Actions Left: {miningXP.findActionsToLevel( miningXP.findXpByName('Amethyst'), this.state.currentExperience ,this.state.levelToGet)}</Text>                        
-                        </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Rune essence </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Rune essence')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Rune essence')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Rune essence'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                     </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Copper </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Copper')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Copper')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Copper'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Tin </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Tin')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Tin')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Tin'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Limetone </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Limetone')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Limetone')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Limetone'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Iron </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Iron')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Iron')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Iron'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Silver </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Silver')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Silver')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Silver'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Pure essence </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Pure essence')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Pure essence')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Pure essence'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Coal </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Coal')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Coal')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Coal'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Sandstone (5kg) </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Sandstone (5kg)')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Sandstone (5kg)')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Sandstone (5kg)'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Sandstone (10kg) </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Sandstone (10kg)')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Sandstone (10kg)')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Sandstone (10kg)'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Gem mining </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Gem mining')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Gem mining')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Gem mining'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Gold </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Gold')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Gold')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Gold'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Granite (500g) </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Granite (500g)')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Granite (500g)')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Granite (500g)'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Granite (2kg) </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Granite (2kg)')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Granite (2kg)')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Granite (2kg)'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+
+                <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Granite (5kg) </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Granite (5kg)')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Granite (5kg)')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Granite (5kg)'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Mithril </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Mithril')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Mithril')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Mithril'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Adamanite </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Adamanite')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Adamanite')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Adamanite'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                  
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Runeite </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Runeite')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Runeite')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Runeite'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+                    <View style={styles.statItem}>
+                        <Text style={styles.statText}>Name: Amethyst </Text>
+                        <Text style={styles.statText}>Level to mine: {Levels.findSkillLevelByName('Amethyst')}</Text>
+                        <Text style={styles.statText}>Experience: {Levels.findSkillXpByName('Amethyst')}</Text>
+                        <Text style={styles.statText}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName('Amethyst'), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                    </View>
+
                 </ScrollView>
                 
             </View>             
         );
-    }
+    }      
 
-    actionsLeftLevel(action){
-        let actionsLeft = 0;
-        let xp = miningXP.findXpByName(action);
-        miningXP.findActionsToLevel(xp, this.currentExperience, this.levelToGet);
-
-        return actionsLeft;
-    };
-    
-    matchXpLevel(type, num){
-        if(type == 'XP'){
-            console.log(levels.findLevelByXp(num))
-            this.setState({ levelToGet: levels.findLevelByXp(num)})
-        } else if(type == 'Level'){ 
-            console.log(levels.findXpByLevel(num))
-            this.setState({ experianceToGet: levels.findXpByLevel(num)})
-        }
-
-        
-
-    
-    
-    }
 }
 const styles = StyleSheet.create({
 	container: {

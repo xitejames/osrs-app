@@ -1,5 +1,4 @@
 import React from 'react';
-import levels from './levelbrackets';
 
 class MiningExperience extends React.Component {
     constructor(props) {
@@ -35,40 +34,12 @@ class MiningExperience extends React.Component {
                 { Name: 'Amethyst', Level: 92, XP: 240 },                
             ]
         };
-	}
-
-    findActionsToLevel(actionXP, currentXp, levelToGet){
-        let actionsLeft = 0;
-        let actions = levels.actionsToLevel(actionXP, currentXp, levelToGet);
-        if(actions > 0)
-        {
-            actionsLeft = actions;
-        }
-        return actionsLeft;
+    }
+    
+    getMiningExperienceTable() {
+        return this.experience;
     }
 
-    findLevelByName(actionName){
-        let checkLevel = 0;
-        let arrayToCheck = this.experience.Tasks;
-        arrayToCheck.forEach(element => {
-            if(element.Name == actionName){
-                checkLevel = element.Level;
-            }
-
-        });
-        return checkLevel;
-    }
-
-    findXpByName(actionName){
-        let checkXp = 0;
-        let arrayToCheck = this.experience.Tasks;
-        arrayToCheck.forEach(element => {
-            if(element.Name == actionName){
-                checkXp = element.XP;
-            }
-        });
-        return checkXp;
-    }
 	
     
 }
