@@ -16,15 +16,12 @@ import cUser  from '../components/CurrentUser';
 		static 	navigationOptions = {
 			headerTitle:
 			<View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-				<Text> Hello </Text>
-
 				<Image source={require('../../assets/osrs.png')}
-							style={{ maxHeight: 60, maxWidth: 130}} />
+				style={{ maxHeight: 60, maxWidth: 130}} />
+				<Text> HomePage </Text>		
 			</View>,
 			
-		};
-		
-		
+		};	
 
         constructor(props) {
             super(props);
@@ -32,85 +29,14 @@ import cUser  from '../components/CurrentUser';
                 stats: {},
                 username: 'Xitejames'
             };
-            this.stats = {
-                playerStats: [
-                    { Name: 'Overall', Rank: '', Level: '', XP: '' },
-                    { Name: 'Attack', Rank: '', Level: '', XP: '' },
-                    { Name: 'Defence', Rank: '', Level: '', XP: '' },
-                    { Name: 'Strength', Rank: '', Level: '', XP: '' },
-                    { Name: 'Hitpoints', Rank: '', Level: '', XP: '' },
-                    { Name: 'Ranged', Rank: '', Level: '', XP: '' },
-                    { Name: 'prayer', Rank: '', Level: '', XP: '' },
-                    { Name: 'Magic', Rank: '', Level: '', XP: '' },
-                    { Name: 'Cooking', Rank: '', Level: '', XP: '' },
-                    { Name: 'Woodcutting', Rank: '', Level: '', XP: '' },
-                    { Name: 'Fletching', Rank: '', Level: '', XP: '' },
-                    { Name: 'Fishing', Rank: '', Level: '', XP: '' },
-                    { Name: 'Firemaking', Rank: '', Level: '', XP: '' },
-                    { Name: 'Crafting', Rank: '', Level: '', XP: '' },
-                    { Name: 'Smithing', Rank: '', Level: '', XP: '' },
-                    { Name: 'Mining', Rank: '', Level: '', XP: '' },
-                    { Name: 'Herblore', Rank: '', Level: '', XP: '' },
-                    { Name: 'Agility', Rank: '', Level: '', XP: '' },
-                    { Name: 'Theiving', Rank: '', Level: '', XP: '' },
-                    { Name: 'Slayer', Rank: '', Level: '', XP: '' },
-                    { Name: 'Farming', Rank: '', Level: '', XP: '' },
-                    { Name: 'RuneCraft', Rank: '', Level: '', XP: '' },
-                    { Name: 'Hunter', Rank: '', Level: '', XP: '' },
-                    { Name: 'Construction', Rank: '', Level: '', XP: '' },
-                    { Name: 'idk', catch1: '', catch2: '', catch3: '', catch4: '' },
-                    { Name: 'Clue Scrolls(all)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(easy)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(medium)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(hard)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(elite)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(Master)', Rank: '', Score: '' },
-                    { Name: 'LMS Rank', Rank: '', Score: '' }
-                ]
-            };
+            this.stats = cUser.resetCurrent()
         }
         onPress = () => {
             this.searchUser(this.state.username);
         };
     
-        resetCurrent(){    
-            let template = {
-                playerStats: [
-                    { Name: 'Overall', Rank: '', Level: '', XP: '' },
-                    { Name: 'Attack', Rank: '', Level: '', XP: '' },
-                    { Name: 'Defence', Rank: '', Level: '', XP: '' },
-                    { Name: 'Strength', Rank: '', Level: '', XP: '' },
-                    { Name: 'Hitpoints', Rank: '', Level: '', XP: '' },
-                    { Name: 'Ranged', Rank: '', Level: '', XP: '' },
-                    { Name: 'prayer', Rank: '', Level: '', XP: '' },
-                    { Name: 'Magic', Rank: '', Level: '', XP: '' },
-                    { Name: 'Cooking', Rank: '', Level: '', XP: '' },
-                    { Name: 'Woodcutting', Rank: '', Level: '', XP: '' },
-                    { Name: 'Fletching', Rank: '', Level: '', XP: '' },
-                    { Name: 'Fishing', Rank: '', Level: '', XP: '' },
-                    { Name: 'Firemaking', Rank: '', Level: '', XP: '' },
-                    { Name: 'Crafting', Rank: '', Level: '', XP: '' },
-                    { Name: 'Smithing', Rank: '', Level: '', XP: '' },
-                    { Name: 'Mining', Rank: '', Level: '', XP: '' },
-                    { Name: 'Herblore', Rank: '', Level: '', XP: '' },
-                    { Name: 'Agility', Rank: '', Level: '', XP: '' },
-                    { Name: 'Theiving', Rank: '', Level: '', XP: '' },
-                    { Name: 'Slayer', Rank: '', Level: '', XP: '' },
-                    { Name: 'Farming', Rank: '', Level: '', XP: '' },
-                    { Name: 'RuneCraft', Rank: '', Level: '', XP: '' },
-                    { Name: 'Hunter', Rank: '', Level: '', XP: '' },
-                    { Name: 'Construction', Rank: '', Level: '', XP: '' },
-                    { Name: 'idk', catch1: '', catch2: '', catch3: '', catch4: '' },
-                    { Name: 'Clue Scrolls(all)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(easy)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(medium)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(hard)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(elite)', Rank: '', Score: '' },
-                    { Name: 'Clue Scrolls(Master)', Rank: '', Score: '' },
-                    { Name: 'LMS Rank', Rank: '', Score: '' }
-                ]
-            };
-            this.setState({ stats: template });
+        resetCurrent(){        
+            this.setState({ stats: cUser.resetCurrent });
         };
     
         searchUser = async (user) => {
@@ -213,14 +139,16 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[4].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[4].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Agility')}>
 							<Image source={require('../../assets/Agility.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Agility</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[17].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[17].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[17].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Smithing')}>
 							<Image source={require('../../assets/Smithing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Smithing</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[14].Level}</Text>

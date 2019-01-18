@@ -1,3 +1,5 @@
 import Mining from './Mining'
+import Agility from './Agility'
+import Smithing from './Smithing'
 
-export { Mining }
+export { Mining, Agility, Smithing }

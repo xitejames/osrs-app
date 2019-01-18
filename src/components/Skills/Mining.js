@@ -13,7 +13,7 @@ class MiningExperience extends React.Component {
                 { Name: 'Rune essence', Level: 1, XP: 5 },
                 { Name: 'Copper', Level: 1, XP: 17.5 },
                 { Name: 'Tin', Level: 1, XP: 17.5 },
-                { Name: 'Limetone', Level: 10, XP: 26.5 },
+                { Name: 'Limestone', Level: 10, XP: 26.5 },
                 { Name: 'Iron', Level: 15, XP: 35 },
                 { Name: 'Silver', Level: 20, XP: 40 },
                 { Name: 'Pure essence', Level: 30, XP: 5 },

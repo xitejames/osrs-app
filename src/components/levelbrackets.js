@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mining } from './Skills'
+import { Mining, Agility, Smithing } from './Skills'
 
 
 class Levels extends React.Component {
@@ -194,10 +194,24 @@ class Levels extends React.Component {
 
 
     setCurrentSkill(newSkill){
-        if(newSkill === 'Mining'){
-            this.currentSkillName = 'Mining';
-            this.currentSkillTasks = Mining.getMiningExperienceTable();
-        }
+   
+        switch (newSkill) {
+            case "Mining":
+              this.currentSkillName = 'Mining';
+              this.currentSkillTasks = Mining.getMiningExperienceTable();
+              break;
+            case "Agility":
+              this.currentSkillName = 'Agility';
+              this.currentSkillTasks = Agility.getAgilityExperienceTable();
+              break;
+            case "Smithing":
+              this.currentSkillName = 'Smithing';
+              this.currentSkillTasks = Smithing.getSmithingExperienceTable();
+              break;
+  
+          }
+
+
         
     }
     getCurrentSkillTasks(){
