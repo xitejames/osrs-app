@@ -5,7 +5,6 @@ import {
     StyleSheet,
     Image,
     TextInput,
-    ScrollView,
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -35,6 +34,7 @@ export default class AgilityScreen extends React.Component {
             currentLevel:'',
             currentExperience: '',
             itemCurrent: {},
+
         };
         
         this.state.currentLevel = cUser.findSkillLevel("Agility");
@@ -45,9 +45,8 @@ export default class AgilityScreen extends React.Component {
 
     }
 
-
     updateSkill(){
-        Levels.setCurrentSkill('Agility');
+        Levels.setCurrentSkill('Cooking');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
@@ -109,23 +108,24 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                 </View>
-
-                <View style={styles.container}>   
-                    <FlatList
-                        data={this.state.itemCurrent}                      
-                        renderItem={({ item }) => (                           
-                        <View style={styles.statItem}>
-                                <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
-                                <Text style={styles.textItem}>Level to mine: {`${item.Level }`}</Text>
-                                <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
-                                <Text style={styles.textItem}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
-                        </View>                
-                        
-                        )}  
-                        keyExtractor={item => item.Name}
-                    />
-                </View>
-                
+                    <View style={styles.container}>  
+                     
+                            <FlatList
+                            data={this.state.itemCurrent}  
+                            extradata={this.state}                        
+                            renderItem={({ item }) => (                           
+                            <View style={styles.statItem}>
+                                    <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
+                                    <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
+                                    <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
+                                    <Text style={styles.textItem}>Actions Left: {
+                                        Levels.findActionsToLevel(Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                            </View>                
+                            
+                            )}  
+                            keyExtractor={item => item.Name}
+                        />
+                         </View>  
             </View>             
         );
     }      

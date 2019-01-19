@@ -138,6 +138,10 @@ class Levels extends React.Component {
 
 
      findActionsToLevel(actionXP, currentXp, xpToGet){
+        console.log('actionXP ' + actionXP)
+        console.log('currentXp ' + currentXp)
+        console.log('xpToGet ' + xpToGet)
+
         let actionsLeft = 0, actions = 0 , xpDifference = 0;
         xpDifference = xpToGet - currentXp;        
         actions = Math.ceil(xpDifference/actionXP);
@@ -283,19 +287,7 @@ class Levels extends React.Component {
             case "Woodcutting":
               this.currentSkillName = 'Woodcutting';
               this.currentSkillTasks = Woodcutting.getWoodcuttingExperienceTable();
-              break; 
-
-
-
-
-  
-
-
-
-
-
-
-              
+              break;               
           }
 
 

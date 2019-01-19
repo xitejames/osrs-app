@@ -110,7 +110,8 @@ export default class FiremakingScreen extends React.Component {
                 
                 <View style={styles.container}>   
                         <FlatList
-                        data={this.state.itemCurrent}                      
+                        data={this.state.itemCurrent}   
+                        extraData={this.state}                      
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
