@@ -1,5 +1,24 @@
 import React from 'react';
-import { Mining, Agility, Smithing } from './Skills'
+import { 
+    Agility,
+    Construction,
+    Cooking,
+    Crafting,
+    Farming,
+    Firemaking,
+    Fishing,
+    Fletching,
+    Herblore,
+    Hunter,
+    Magic,
+    Mining,
+    Prayer,
+    Runecrafting,
+    Smithing,
+    Thieving,
+    Woodcutting,
+
+} from './Skills'
 
 
 class Levels extends React.Component {
@@ -196,26 +215,94 @@ class Levels extends React.Component {
     setCurrentSkill(newSkill){
    
         switch (newSkill) {
-            case "Mining":
-              this.currentSkillName = 'Mining';
-              this.currentSkillTasks = Mining.getMiningExperienceTable();
-              break;
+ 
             case "Agility":
               this.currentSkillName = 'Agility';
               this.currentSkillTasks = Agility.getAgilityExperienceTable();
               break;
+            case "Construction":
+              this.currentSkillName = 'Construction';
+              this.currentSkillTasks = Construction.getConstructionExperienceTable();
+              break;
+            case "Cooking":
+              this.currentSkillName = 'Cooking';
+              this.currentSkillTasks = Cooking.getCookingExperienceTable();
+              break;
+            case "Crafting":
+              this.currentSkillName = 'Crafting';
+              this.currentSkillTasks = Crafting.getCraftingExperienceTable();
+              break;
+            case "Farming":
+              this.currentSkillName = 'Farming';
+              this.currentSkillTasks = Farming.getFarmingExperienceTable();
+              break;
+            case "Firemaking":
+              this.currentSkillName = 'Firemaking';
+              this.currentSkillTasks = Firemaking.getFiremakingExperienceTable();
+              break;
+            case "Fishing":
+              this.currentSkillName = 'Fishing';
+              this.currentSkillTasks = Fishing.getFishingExperienceTable();
+              break; 
+            case "Fletching":
+              this.currentSkillName = 'Fletching';
+              this.currentSkillTasks = Fletching.getFletchingExperienceTable();
+              break;
+            case "Herblore":
+              this.currentSkillName = 'Herblore';
+              this.currentSkillTasks = Herblore.getHerbloreExperienceTable();
+              break;
+            case "Hunter":
+              this.currentSkillName = 'Hunter';
+              this.currentSkillTasks = Hunter.getHunterExperienceTable();
+              break;
+            case "Magic":
+              this.currentSkillName = 'Magic';
+              this.currentSkillTasks = Magic.getMagicExperienceTable();
+              break; 
+            case "Mining":
+              this.currentSkillName = 'Mining';
+              this.currentSkillTasks = Mining.getMiningExperienceTable();
+              break;
+            case "Prayer":
+              this.currentSkillName = 'Prayer';
+              this.currentSkillTasks = Prayer.getPrayerExperienceTable();
+            break;
+              case "Runecrafting":
+              this.currentSkillName = 'Runecrafting';
+              this.currentSkillTasks = Runecrafting.getRunecraftingExperienceTable();
+              break; 
             case "Smithing":
               this.currentSkillName = 'Smithing';
               this.currentSkillTasks = Smithing.getSmithingExperienceTable();
               break;
+            case "Thieving":
+              this.currentSkillName = 'Thieving';
+              this.currentSkillTasks = Thieving.getThievingExperienceTable();
+              break; 
+            case "Woodcutting":
+              this.currentSkillName = 'Woodcutting';
+              this.currentSkillTasks = Woodcutting.getWoodcuttingExperienceTable();
+              break; 
+
+
+
+
   
+
+
+
+
+
+
+              
           }
 
 
         
     }
     getCurrentSkillTasks(){
-        return this.currentSkill;
+        return this.currentSkillTasks.Tasks;
     }
     getCurrentSkillName(){
         return this.currentSkillName;

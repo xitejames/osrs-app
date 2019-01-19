@@ -37,8 +37,7 @@ class CurrentUser extends React.Component {
         let arrayToCheck = this.stats.playerStats;        
         arrayToCheck.forEach(element => {        
             if(element.Name == sName){
-                num = i;
-                console.log(num)                
+                num = i;              
             }
             i++
         });
@@ -67,7 +66,7 @@ class CurrentUser extends React.Component {
                 { Name: 'Mining', Rank: '', Level: '', XP: '' },
                 { Name: 'Herblore', Rank: '', Level: '', XP: '' },
                 { Name: 'Agility', Rank: '', Level: '', XP: '' },
-                { Name: 'Theiving', Rank: '', Level: '', XP: '' },
+                { Name: 'Thieving', Rank: '', Level: '', XP: '' },
                 { Name: 'Slayer', Rank: '', Level: '', XP: '' },
                 { Name: 'Farming', Rank: '', Level: '', XP: '' },
                 { Name: 'RuneCraft', Rank: '', Level: '', XP: '' },

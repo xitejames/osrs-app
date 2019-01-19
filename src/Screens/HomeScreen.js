@@ -171,7 +171,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[16].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[16].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Fishing')}>
 							<Image source={require('../../assets/Fishing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Fishing</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[11].Level}</Text>
@@ -186,15 +187,17 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Level: {this.stats.playerStats[4].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[4].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[4].XP}</Text>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						</TouchableOpacity>						
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Thieving')}>
 							<Image source={require('../../assets/Thieving.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Thieving</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[19].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[19].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[19].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Cooking')}>
 							<Image source={require('../../assets/Cooking.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Cooking</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[12].Level}</Text>
@@ -203,7 +206,8 @@ import cUser  from '../components/CurrentUser';
 						</TouchableOpacity>
 					</View>
 					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}>
+					<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Prayer')}>
 							<Image source={require('../../assets/Prayer.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Prayer</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[6].Level}</Text>
@@ -217,7 +221,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[13].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[13].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Firemaking')}>
 							<Image
 								source={require('../../assets/Firemaking.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
@@ -243,7 +248,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[10].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[10].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Woodcutting')}>
 							<Image
 								source={require('../../assets/Woodcutting.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
@@ -255,7 +261,8 @@ import cUser  from '../components/CurrentUser';
 						</TouchableOpacity>
 					</View>
 					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}>
+					<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Runecrafting')}>
 							<Image
 								source={require('../../assets/Runecrafting.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
@@ -279,7 +286,32 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[20].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[20].XP}</Text>
 						</TouchableOpacity>    
-                        </View>   
+                	</View>   
+					<View style={styles.statBar}>
+					<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Construction')}>
+							<Image source={require('../../assets/Construction.png')} style={{ maxHeight: 50, maxWidth: 50 }}/>
+							<Text style={styles.statText}>Construction</Text>
+							<Text style={styles.statText}>Level: {this.stats.playerStats[22].Level}</Text>
+							<Text style={styles.statText}>Rank: {this.stats.playerStats[22].Rank}</Text>
+							<Text style={styles.statText}>XP: {this.stats.playerStats[22].XP}</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Hunter')}>
+							<Image source={require('../../assets/Hunter.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Text style={styles.statText}>Hunter</Text>
+							<Text style={styles.statText}>Level: {this.stats.playerStats[23].Level}</Text>
+							<Text style={styles.statText}>Rank: {this.stats.playerStats[23].Rank}</Text>
+							<Text style={styles.statText}>XP: {this.stats.playerStats[23].XP}</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.statItem}>
+							<Text style={styles.statText}>TotalLevel</Text>
+							<Text style={styles.statText}>Level: {this.stats.playerStats[0].Level}</Text>
+							<Text style={styles.statText}>Rank: {this.stats.playerStats[0].Rank}</Text>
+							<Text style={styles.statText}>XP: {this.stats.playerStats[0].XP}</Text>
+						</TouchableOpacity>    
+                	</View>  
+
 
 
 
