@@ -161,7 +161,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,    
+        fontSize: 15,  
+        color: '#FF0'      
+  
     },
     inputText: {
         fontSize: 15,   

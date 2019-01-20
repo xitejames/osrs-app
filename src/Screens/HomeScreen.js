@@ -164,7 +164,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[2].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[2].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Herblore')}>
 							<Image source={require('../../assets/Herblore.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Herblore</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[16].Level}</Text>
@@ -214,7 +215,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[6].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[6].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Crafting')}>
 							<Image source={require('../../assets/Crafting.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Crafting</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[13].Level}</Text>
@@ -234,14 +236,16 @@ import cUser  from '../components/CurrentUser';
 						</TouchableOpacity>
 					</View>
 					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}>
+					<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Magic')}>
 							<Image source={require('../../assets/Magic.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Magic</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[7].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[7].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[7].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Fletching')}>
 							<Image source={require('../../assets/Fletching.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Fletching</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[10].Level}</Text>
@@ -279,7 +283,8 @@ import cUser  from '../components/CurrentUser';
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[19].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[19].XP}</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}>
+						<TouchableOpacity style={styles.statItem}
+                        onPress={() => this.props.navigation.navigate('Farming')}>
 							<Image source={require('../../assets/Farming.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Farming</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[20].Level}</Text>

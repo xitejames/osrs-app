@@ -158,6 +158,8 @@ const styles = StyleSheet.create({
     },
     textItem: {
         fontSize: 15,    
+        color: '#FF0'      
+
     },
     inputText: {
         fontSize: 15,   

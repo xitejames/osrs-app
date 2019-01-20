@@ -69,7 +69,7 @@ class CurrentUser extends React.Component {
                 { Name: 'Thieving', Rank: '', Level: '', XP: '' },
                 { Name: 'Slayer', Rank: '', Level: '', XP: '' },
                 { Name: 'Farming', Rank: '', Level: '', XP: '' },
-                { Name: 'RuneCraft', Rank: '', Level: '', XP: '' },
+                { Name: 'Runecrafting', Rank: '', Level: '', XP: '' },
                 { Name: 'Hunter', Rank: '', Level: '', XP: '' },
                 { Name: 'Construction', Rank: '', Level: '', XP: '' },
                 { Name: 'idk', catch1: '', catch2: '', catch3: '', catch4: '' },

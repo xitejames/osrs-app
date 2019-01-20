@@ -16,13 +16,13 @@ import Levels from '../components/levelbrackets';
 
 
 
-export default class AgilityScreen extends React.Component {
+export default class CraftingScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <Image source={require('../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Agility Screen </Text>		
+            <Text> Crafting Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,25 @@ export default class AgilityScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Agility");
-        this.state.currentExperience = cUser.findSkillExperience("Agility");
-        this.state.levelToGet = cUser.findSkillLevel("Agility");
-        this.state.experianceToGet = cUser.findSkillExperience("Agility");
+        this.state.currentLevel = cUser.findSkillLevel("Crafting");
+        this.state.currentExperience = cUser.findSkillExperience("Crafting");
+        this.state.levelToGet = cUser.findSkillLevel("Crafting");
+        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
         this.updateSkill();
 
     }
 
 
     updateSkill(){
-        Levels.setCurrentSkill('Agility');
+        Levels.setCurrentSkill('Crafting');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Agility");
-        this.state.currentExperience = cUser.findSkillExperience("Agility");
-        this.state.levelToGet = cUser.findSkillLevel("Agility");
-        this.state.experianceToGet = cUser.findSkillExperience("Agility");
+        this.state.currentLevel = cUser.findSkillLevel("Crafting");
+        this.state.currentExperience = cUser.findSkillExperience("Crafting");
+        this.state.levelToGet = cUser.findSkillLevel("Crafting");
+        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
         this.updateSkill();
     }
 
@@ -65,7 +65,7 @@ export default class AgilityScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility level: </Text>
+                        <Text style={styles.textItem}>Crafting level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +76,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Agility experience: </Text>
+                        <Text style={styles.textItem} >Crafting experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +87,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility level to get: </Text>
+                        <Text style={styles.textItem}>Crafting level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +98,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility experience to get: </Text>
+                        <Text style={styles.textItem}>Crafting experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -117,7 +117,7 @@ export default class AgilityScreen extends React.Component {
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
-                                <Text style={styles.textItem}>Level to mine: {`${item.Level }`}</Text>
+                                <Text style={styles.textItem}>Level to use: {`${item.Level }`}</Text>
                                 <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
                                 <Text style={styles.textItem}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                         </View>                
@@ -157,7 +157,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,    
+        fontSize: 15, 
+        color: '#FF0'      
+   
     },
     inputText: {
         fontSize: 15,   

@@ -130,7 +130,39 @@ class Levels extends React.Component {
                 { Level: '96', XP: 9684577, Difference: 913019 },
                 { Level: '97', XP: 10692629, Difference: 1008052 },
                 { Level: '98', XP: 11805606, Difference: 1112977 },
-                { Level: '99', XP: 13034431, Difference: 1228825 },          
+                { Level: '99', XP: 13034431, Difference: 1228825 },   
+                { Level: '100', XP: 14391160, Difference: 1356729 }, 
+                { Level: '101', XP: 15889109, Difference: 1497949 },      
+                { Level: '102', XP: 17542976, Difference: 1653867 }, 
+                { Level: '103', XP: 19368992, Difference: 1826016 },    
+                { Level: '104', XP: 21385073, Difference: 2016081 }, 
+                { Level: '105', XP: 23611006, Difference: 2225933 },  
+                { Level: '106', XP: 26068632, Difference: 2457626 }, 
+                { Level: '107', XP: 28782069, Difference: 2713437 },  
+                { Level: '108', XP: 31777943, Difference: 2995874 }, 
+                { Level: '109', XP: 35085654, Difference: 3307711 },  
+                { Level: '110', XP: 38737661, Difference: 3652007 }, 
+                { Level: '111', XP: 42769801, Difference: 4032140 },  
+                { Level: '112', XP: 47221641, Difference: 4451840 }, 
+                { Level: '113', XP: 52136869, Difference: 4915228 },       
+                { Level: '114', XP: 57563718, Difference: 5426849 },  
+                { Level: '115', XP: 63555443, Difference: 5991725 }, 
+                { Level: '116', XP: 70170840, Difference: 6615397 },                 
+                { Level: '117', XP: 77474828, Difference: 7303988 },  
+                { Level: '118', XP: 85539082, Difference: 8064254 }, 
+                { Level: '119', XP: 94442737, Difference: 8903655 },    
+                { Level: '120', XP: 104273167, Difference: 9830430 },     
+                { Level: '121', XP: 115126838, Difference: 10853671 },     
+                { Level: '122', XP: 127110260, Difference: 11983422 },   
+                { Level: '123', XP: 140341028, Difference: 13230768 },    
+                { Level: '124', XP: 154948977, Difference: 14607949 },     
+                { Level: '125', XP: 171077457, Difference: 16128480 },     
+                { Level: '126', XP: 188884740, Difference: 17807283 },     
+                { Level: '127', XP: 200000000, Difference: 11115260 },     
+
+
+
+
             ]
         };
     }
@@ -138,10 +170,6 @@ class Levels extends React.Component {
 
 
      findActionsToLevel(actionXP, currentXp, xpToGet){
-        console.log('actionXP ' + actionXP)
-        console.log('currentXp ' + currentXp)
-        console.log('xpToGet ' + xpToGet)
-
         let actionsLeft = 0, actions = 0 , xpDifference = 0;
         xpDifference = xpToGet - currentXp;        
         actions = Math.ceil(xpDifference/actionXP);
