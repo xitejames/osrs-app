@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class HerbloreScreen extends React.Component {
+export default class WoodcuttingScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Herblore Screen </Text>		
+            <Text> Woodcutting Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,25 @@ export default class HerbloreScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Herblore");
-        this.state.currentExperience = cUser.findSkillExperience("Herblore");
-        this.state.levelToGet = cUser.findSkillLevel("Herblore");
-        this.state.experianceToGet = cUser.findSkillExperience("Herblore");
+        this.state.currentLevel = cUser.findSkillLevel("Woodcutting");
+        this.state.currentExperience = cUser.findSkillExperience("Woodcutting");
+        this.state.levelToGet = cUser.findSkillLevel("Woodcutting");
+        this.state.experianceToGet = cUser.findSkillExperience("Woodcutting");
         this.updateSkill();
 
     }
 
 
     updateSkill(){
-        Levels.setCurrentSkill('Herblore');
+        Levels.setCurrentSkill('Woodcutting');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Herblore");
-        this.state.currentExperience = cUser.findSkillExperience("Herblore");
-        this.state.levelToGet = cUser.findSkillLevel("Herblore");
-        this.state.experianceToGet = cUser.findSkillExperience("Herblore");
+        this.state.currentLevel = cUser.findSkillLevel("Woodcutting");
+        this.state.currentExperience = cUser.findSkillExperience("Woodcutting");
+        this.state.levelToGet = cUser.findSkillLevel("Woodcutting");
+        this.state.experianceToGet = cUser.findSkillExperience("Woodcutting");
         this.updateSkill();
     }
 
@@ -65,7 +65,7 @@ export default class HerbloreScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Herblore level: </Text>
+                        <Text style={styles.textItem}>Woodcutting level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +76,7 @@ export default class HerbloreScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Herblore experience: </Text>
+                        <Text style={styles.textItem} >Woodcutting experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +87,7 @@ export default class HerbloreScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Herblore level to get: </Text>
+                        <Text style={styles.textItem}>Woodcutting level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +98,7 @@ export default class HerbloreScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Herblore experience to get: </Text>
+                        <Text style={styles.textItem}>Woodcutting experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -112,8 +112,8 @@ export default class HerbloreScreen extends React.Component {
 
                 <View style={styles.container}>   
                     <FlatList
-                        data={this.state.itemCurrent}       
-                        extraData={this.state}                  
+                        data={this.state.itemCurrent}    
+                        extraData={this.state}                     
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
@@ -157,9 +157,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,    
+        fontSize: 15,  
         color: '#FF0'      
-
+  
     },
     inputText: {
         fontSize: 15,   

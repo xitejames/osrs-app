@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class PrayerScreen extends React.Component {
+export default class CraftingScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Prayer Screen </Text>		
+            <Text> Crafting Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,25 @@ export default class PrayerScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Prayer");
-        this.state.currentExperience = cUser.findSkillExperience("Prayer");
-        this.state.levelToGet = cUser.findSkillLevel("Prayer");
-        this.state.experianceToGet = cUser.findSkillExperience("Prayer");
+        this.state.currentLevel = cUser.findSkillLevel("Crafting");
+        this.state.currentExperience = cUser.findSkillExperience("Crafting");
+        this.state.levelToGet = cUser.findSkillLevel("Crafting");
+        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
         this.updateSkill();
 
     }
 
 
     updateSkill(){
-        Levels.setCurrentSkill('Prayer');
+        Levels.setCurrentSkill('Crafting');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Prayer");
-        this.state.currentExperience = cUser.findSkillExperience("Prayer");
-        this.state.levelToGet = cUser.findSkillLevel("Prayer");
-        this.state.experianceToGet = cUser.findSkillExperience("Prayer");
+        this.state.currentLevel = cUser.findSkillLevel("Crafting");
+        this.state.currentExperience = cUser.findSkillExperience("Crafting");
+        this.state.levelToGet = cUser.findSkillLevel("Crafting");
+        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
         this.updateSkill();
     }
 
@@ -65,7 +65,7 @@ export default class PrayerScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Prayer level: </Text>
+                        <Text style={styles.textItem}>Crafting level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +76,7 @@ export default class PrayerScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Prayer experience: </Text>
+                        <Text style={styles.textItem} >Crafting experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +87,7 @@ export default class PrayerScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Prayer level to get: </Text>
+                        <Text style={styles.textItem}>Crafting level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +98,7 @@ export default class PrayerScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Prayer experience to get: </Text>
+                        <Text style={styles.textItem}>Crafting experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -157,9 +157,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,    
+        fontSize: 15, 
         color: '#FF0'      
-
+   
     },
     inputText: {
         fontSize: 15,   

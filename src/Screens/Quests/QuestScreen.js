@@ -4,15 +4,13 @@ import {
     Text,
     StyleSheet,
     Image,
-    TouchableOpacity,
-    Button,
 } from "react-native";
 
-export default class HomeScreen extends React.Component {
+export default class QuestScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
             <Text> Home Screen </Text>		
         </View>,
@@ -28,16 +26,9 @@ export default class HomeScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Button 
-                    style={styles.buttons}                
-                    title={"Skill Screen"}  
-                    onPress={() => this.props.navigation.navigate('Skill')} >             
-                </Button>
-                <Button 
-                    style={styles.buttons}                
-                    title={"Quest Screen"}  
-                    onPress={() => this.props.navigation.navigate('Quest')} >             
-                </Button>
+                <Text>
+                    Quest Screen!!
+                </Text>
             </View>         
         );
     }      

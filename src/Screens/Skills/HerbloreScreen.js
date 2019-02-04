@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class SmithingScreen extends React.Component {
+export default class HerbloreScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
-        <View style={{ justifyContent:'space-between', flexDirection:'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+        <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> SmithingPage </Text>		
+            <Text> Herblore Screen </Text>		
         </View>,
         
     };	
@@ -30,31 +30,32 @@ export default class SmithingScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            levelToGet:'',
-            experianceToGet:'',
+            levelToGet: '',
+            experianceToGet: '',
             currentLevel:'',
-            currentExperience:'',
+            currentExperience: '',
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Smithing");
-        this.state.currentExperience = cUser.findSkillExperience("Smithing");
-        this.state.levelToGet = cUser.findSkillLevel("Smithing");
-        this.state.experianceToGet = cUser.findSkillExperience("Smithing");
+        this.state.currentLevel = cUser.findSkillLevel("Herblore");
+        this.state.currentExperience = cUser.findSkillExperience("Herblore");
+        this.state.levelToGet = cUser.findSkillLevel("Herblore");
+        this.state.experianceToGet = cUser.findSkillExperience("Herblore");
         this.updateSkill();
 
     }
 
+
     updateSkill(){
-        Levels.setCurrentSkill('Smithing');
+        Levels.setCurrentSkill('Herblore');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Smithing");
-        this.state.currentExperience = cUser.findSkillExperience("Smithing");
-        this.state.levelToGet = cUser.findSkillLevel("Smithing");
-        this.state.experianceToGet = cUser.findSkillExperience("Smithing");
+        this.state.currentLevel = cUser.findSkillLevel("Herblore");
+        this.state.currentExperience = cUser.findSkillExperience("Herblore");
+        this.state.levelToGet = cUser.findSkillLevel("Herblore");
+        this.state.experianceToGet = cUser.findSkillExperience("Herblore");
         this.updateSkill();
     }
 
@@ -64,7 +65,7 @@ export default class SmithingScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Smithing level: </Text>
+                        <Text style={styles.textItem}>Herblore level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -75,7 +76,7 @@ export default class SmithingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Smithing experience: </Text>
+                        <Text style={styles.textItem} >Herblore experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -86,7 +87,7 @@ export default class SmithingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Smithing level to get: </Text>
+                        <Text style={styles.textItem}>Herblore level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -97,7 +98,7 @@ export default class SmithingScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Smithing experience to get: </Text>
+                        <Text style={styles.textItem}>Herblore experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -110,9 +111,9 @@ export default class SmithingScreen extends React.Component {
                 </View>
 
                 <View style={styles.container}>   
-                        <FlatList
-                        data={this.state.itemCurrent}          
-                        extraData={this.state}               
+                    <FlatList
+                        data={this.state.itemCurrent}       
+                        extraData={this.state}                  
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
@@ -134,8 +135,8 @@ export default class SmithingScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
         flex: 1,
-        flexDirection:'column',
-    	backgroundColor:'#625341',
+        flexDirection: 'column',
+    	backgroundColor: '#625341',
 	},
 	navBar: {
 
@@ -144,8 +145,8 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	statBar: {
-        flexDirection:'row',
-        justifyContent:'space-around',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
 	},
 	statItem: {
         margin: 10,
@@ -156,12 +157,12 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15, 
+        fontSize: 15,    
         color: '#FF0'      
-   
+
     },
     inputText: {
         fontSize: 15,   
-        backgroundColor:'#625200' 
+        backgroundColor: '#625200' 
     },
 });

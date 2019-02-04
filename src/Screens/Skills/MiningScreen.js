@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class CookingScreen extends React.Component {
+export default class MiningScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Cooking Screen </Text>		
+            <Text> MiningPage </Text>		
         </View>,
         
     };	
@@ -37,23 +37,25 @@ export default class CookingScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("");
-        this.state.currentExperience = cUser.findSkillExperience("Cooking");
-        this.state.levelToGet = cUser.findSkillLevel("Cooking");
-        this.state.experianceToGet = cUser.findSkillExperience("Cooking");
+        this.state.currentLevel = cUser.findSkillLevel("Mining");
+        this.state.currentExperience = cUser.findSkillExperience("Mining");
+        this.state.levelToGet = cUser.findSkillLevel("Mining");
+        this.state.experianceToGet = cUser.findSkillExperience("Mining");
         this.updateSkill();
+
     }
 
+
     updateSkill(){
-        Levels.setCurrentSkill('Cooking');
+        Levels.setCurrentSkill('Mining');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Cooking");
-        this.state.currentExperience = cUser.findSkillExperience("Cooking");
-        this.state.levelToGet = cUser.findSkillLevel("Cooking");
-        this.state.experianceToGet = cUser.findSkillExperience("Cooking");
+        this.state.currentLevel = cUser.findSkillLevel("Mining");
+        this.state.currentExperience = cUser.findSkillExperience("Mining");
+        this.state.levelToGet = cUser.findSkillLevel("Mining");
+        this.state.experianceToGet = cUser.findSkillExperience("Mining");
         this.updateSkill();
     }
 
@@ -63,7 +65,7 @@ export default class CookingScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Cooking level: </Text>
+                        <Text style={styles.textItem}>Mining level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -74,7 +76,7 @@ export default class CookingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Cooking experience: </Text>
+                        <Text style={styles.textItem} >Mining experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -85,7 +87,7 @@ export default class CookingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Cooking level to get: </Text>
+                        <Text style={styles.textItem}>Mining level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -96,7 +98,7 @@ export default class CookingScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Cooking experience to get: </Text>
+                        <Text style={styles.textItem}>Mining experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -107,11 +109,11 @@ export default class CookingScreen extends React.Component {
                         ></TextInput>
                     </View>
                 </View>
-                
+
                 <View style={styles.container}>   
                         <FlatList
-                        data={this.state.itemCurrent}     
-                        extraData={this.state}                    
+                        data={this.state.itemCurrent}            
+                        extraData={this.state}             
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
@@ -124,12 +126,6 @@ export default class CookingScreen extends React.Component {
                         keyExtractor={item => item.Name}
                     />
                 </View>
-                           
-
-                        
-
-
-
                 
             </View>             
         );
@@ -161,9 +157,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,
+        fontSize: 15,    
         color: '#FF0'      
-    
+
     },
     inputText: {
         fontSize: 15,   

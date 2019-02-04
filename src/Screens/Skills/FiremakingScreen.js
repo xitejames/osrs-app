@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class CraftingScreen extends React.Component {
+export default class FiremakingScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Crafting Screen </Text>		
+            <Text> Firemaking Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,23 @@ export default class CraftingScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Crafting");
-        this.state.currentExperience = cUser.findSkillExperience("Crafting");
-        this.state.levelToGet = cUser.findSkillLevel("Crafting");
-        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
+        this.state.currentLevel = cUser.findSkillLevel("");
+        this.state.currentExperience = cUser.findSkillExperience("Firemaking");
+        this.state.levelToGet = cUser.findSkillLevel("Firemaking");
+        this.state.experianceToGet = cUser.findSkillExperience("Firemaking");
         this.updateSkill();
-
     }
 
-
     updateSkill(){
-        Levels.setCurrentSkill('Crafting');
+        Levels.setCurrentSkill('Firemaking');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Crafting");
-        this.state.currentExperience = cUser.findSkillExperience("Crafting");
-        this.state.levelToGet = cUser.findSkillLevel("Crafting");
-        this.state.experianceToGet = cUser.findSkillExperience("Crafting");
+        this.state.currentLevel = cUser.findSkillLevel("Firemaking");
+        this.state.currentExperience = cUser.findSkillExperience("Firemaking");
+        this.state.levelToGet = cUser.findSkillLevel("Firemaking");
+        this.state.experianceToGet = cUser.findSkillExperience("Firemaking");
         this.updateSkill();
     }
 
@@ -65,7 +63,7 @@ export default class CraftingScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Crafting level: </Text>
+                        <Text style={styles.textItem}>Firemaking level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +74,7 @@ export default class CraftingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Crafting experience: </Text>
+                        <Text style={styles.textItem} >Firemaking experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +85,7 @@ export default class CraftingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Crafting level to get: </Text>
+                        <Text style={styles.textItem}>Firemaking level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +96,7 @@ export default class CraftingScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Crafting experience to get: </Text>
+                        <Text style={styles.textItem}>Firemaking experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -109,15 +107,15 @@ export default class CraftingScreen extends React.Component {
                         ></TextInput>
                     </View>
                 </View>
-
+                
                 <View style={styles.container}>   
-                    <FlatList
+                        <FlatList
                         data={this.state.itemCurrent}   
                         extraData={this.state}                      
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
-                                <Text style={styles.textItem}>Level to use: {`${item.Level }`}</Text>
+                                <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
                                 <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
                                 <Text style={styles.textItem}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                         </View>                
@@ -126,6 +124,12 @@ export default class CraftingScreen extends React.Component {
                         keyExtractor={item => item.Name}
                     />
                 </View>
+                           
+
+                        
+
+
+
                 
             </View>             
         );
@@ -157,9 +161,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15, 
+        fontSize: 15,  
         color: '#FF0'      
-   
+  
     },
     inputText: {
         fontSize: 15,   

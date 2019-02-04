@@ -5,23 +5,24 @@ import {
     StyleSheet,
     Image,
     TextInput,
+    ScrollView,
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class AgilityScreen extends React.Component {
+export default class ConstructionScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Agility Screen </Text>		
+            <Text> Construction Screen </Text>		
         </View>,
         
     };	
@@ -34,36 +35,27 @@ export default class AgilityScreen extends React.Component {
             currentLevel:'',
             currentExperience: '',
             itemCurrent: {},
-            currentImage: '',
-
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Agility");
-        this.state.currentExperience = cUser.findSkillExperience("Agility");
-        this.state.levelToGet = cUser.findSkillLevel("Agility");
-        this.state.experianceToGet = cUser.findSkillExperience("Agility");
+        this.state.currentLevel = cUser.findSkillLevel("Construction");
+        this.state.currentExperience = cUser.findSkillExperience("Construction");
+        this.state.levelToGet = cUser.findSkillLevel("Construction");
+        this.state.experianceToGet = cUser.findSkillExperience("Construction");
         this.updateSkill();
 
     }
 
+
     updateSkill(){
-        Levels.setCurrentSkill('Agility');
+        Levels.setCurrentSkill('Construction');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
-    findImage(image){
-        test = image.split(' ').join('_')
-        newUrl = '../../assets/Skill_Items/Agility/'+test+ '.png'
-        this.currentImage = newUrl
-        console.log(newUrl)
-        return newUrl
-    }
-
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Agility");
-        this.state.currentExperience = cUser.findSkillExperience("Agility");
-        this.state.levelToGet = cUser.findSkillLevel("Agility");
-        this.state.experianceToGet = cUser.findSkillExperience("Agility");
+        this.state.currentLevel = cUser.findSkillLevel("Construction");
+        this.state.currentExperience = cUser.findSkillExperience("Construction");
+        this.state.levelToGet = cUser.findSkillLevel("Construction");
+        this.state.experianceToGet = cUser.findSkillExperience("Construction");
         this.updateSkill();
     }
 
@@ -73,7 +65,7 @@ export default class AgilityScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility level: </Text>
+                        <Text style={styles.textItem}>Construction level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -84,7 +76,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Agility experience: </Text>
+                        <Text style={styles.textItem} >Construction experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -95,7 +87,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility level to get: </Text>
+                        <Text style={styles.textItem}>Construction level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -106,7 +98,7 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Agility experience to get: </Text>
+                        <Text style={styles.textItem}>Construction experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -117,33 +109,24 @@ export default class AgilityScreen extends React.Component {
                         ></TextInput>
                     </View>
                 </View>
-                    <View style={styles.container}>  
-                     
-                            <FlatList
-                            data={this.state.itemCurrent}  
-                            extradata={this.state}                        
-                            renderItem={({ item }) => (                          
-                            <View style={styles.statBar} >                              
-                                
-                                <View style={styles.statItem}>
-                                        <Text style={styles.textItem}>
-                                            Name: {`${item.Name }`}                                             
-                                        </Text>
-                                        <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
-                                        <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
-                                        <Text style={styles.textItem}>Actions Left: {
-                                            Levels.findActionsToLevel(Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
-                                </View>  
-                                <View style={styles.statImage}>
-                                <Image source={require('../../assets/Skill_Items/Agility/Al_Kharid_Rooftop.png')}/>
-                                </View> 
-                            </View>                        
-                            
-                            
-                            )}  
-                            keyExtractor={item => item.Name}
-                        />
-                         </View>  
+
+                <View style={styles.container}>   
+                    <FlatList
+                        data={this.state.itemCurrent}      
+                        extraData={this.state}                   
+                        renderItem={({ item }) => (                           
+                        <View style={styles.statItem}>
+                                <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
+                                <Text style={styles.textItem}>Level to mine: {`${item.Level }`}</Text>
+                                <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
+                                <Text style={styles.textItem}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                        </View>                
+                        
+                        )}  
+                        keyExtractor={item => item.Name}
+                    />
+                </View>
+                
             </View>             
         );
     }      
@@ -163,17 +146,10 @@ const styles = StyleSheet.create({
 	},
 	statBar: {
         flexDirection: 'row',
+        justifyContent: 'space-around',
 	},
 	statItem: {
         margin: 10,
-        flex: 0.5,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-    },
-    statImage: {
-        flex: 0.5,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
     headItem: {
         marginLeft: 10,
@@ -181,8 +157,8 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,
-		color: '#FF0'    
+        fontSize: 15,  
+		color: '#FF0'      
     },
     inputText: {
         fontSize: 15,   

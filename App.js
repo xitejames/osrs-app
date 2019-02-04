@@ -5,7 +5,6 @@ import {
   createAppContainer
 } from 'react-navigation';
 import { 
-  HomeScreen, 
   SkillScreen,
   AgilityScreen, 
   ConstructionScreen,  
@@ -25,11 +24,20 @@ import {
   ThievingScreen,
   WoodcuttingScreen,
 
+} from './src/Screens/Skills'
+
+import {   
+  HomeScreen
 } from './src/Screens'
+
+import {   
+  QuestScreen
+} from './src/Screens/Quests'
 
 
 const RunescapeApp = createStackNavigator({
   Home: HomeScreen,   
+  Quest: QuestScreen,
   Skill: SkillScreen,
   Agility: AgilityScreen,
   Construction: ConstructionScreen,

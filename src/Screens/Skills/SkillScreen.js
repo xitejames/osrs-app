@@ -10,14 +10,14 @@ import {
     ImageBackground,
  } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
+import cUser  from '../../Classes/CurrentUser';
 
 
     export default class SkillScreen extends React.Component {	
 		static 	navigationOptions = {
 			headerTitle:
 			<View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-				<Image source={require('../../assets/osrs.png')}
+				<Image source={require('../../../assets/osrs.png')}
 				style={{ maxHeight: 60, maxWidth: 130}} />
 				<Text> Skills Screen </Text>		
 			</View>,
@@ -30,7 +30,8 @@ import cUser  from '../Classes/CurrentUser';
                 stats: {},
                 username: 'Xitejames'
             };
-            this.stats = cUser.resetCurrent()
+			this.stats = cUser.resetCurrent()
+			cUser.setStats(cUser.resetCurrent())
         }
         onPress = () => {
             this.searchUser(this.state.username);
@@ -96,7 +97,7 @@ import cUser  from '../Classes/CurrentUser';
 				</View>
 
 				<ImageBackground
-					source={require('../../assets/Skill_Icons/Inventory.png')}
+					source={require('../../../assets/Skill_Icons/Inventory.png')}
 					style={styles.imgBackground}
 					resizeMode="stretch"
 				>
@@ -109,7 +110,7 @@ import cUser  from '../Classes/CurrentUser';
 						}}
 					>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Attack.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Attack.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Attack</Text>
 							<Text style={styles.statText}>Level:{this.stats.playerStats[1].Level}</Text>
 							<Text style={styles.statText}>Rank:{this.stats.playerStats[1].Rank}</Text>
@@ -117,7 +118,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 					
                     <TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Hitpoints.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Hitpoints.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Hitpoints</Text>
 							<Text style={styles.statText}>Level:{this.stats.playerStats[4].Level}</Text>
 							<Text style={styles.statText}>Rank:{this.stats.playerStats[4].Rank}</Text>
@@ -125,7 +126,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Mining')}>
-							<Image source={require('../../assets/Skill_Icons/Mining.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Mining.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Mining</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[15].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[15].Rank}</Text>
@@ -134,7 +135,7 @@ import cUser  from '../Classes/CurrentUser';
 					</View>
 					<View style={styles.statBar}>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Strength.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Strength.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Strength</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[3].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[3].Rank}</Text>
@@ -142,7 +143,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Agility')}>
-							<Image source={require('../../assets/Skill_Icons/Agility.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Agility.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Agility</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[17].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[17].Rank}</Text>
@@ -150,7 +151,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Smithing')}>
-							<Image source={require('../../assets/Skill_Icons/Smithing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Smithing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Smithing</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[14].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[14].Rank}</Text>
@@ -159,7 +160,7 @@ import cUser  from '../Classes/CurrentUser';
 					</View>
 					<View style={styles.statBar}>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Defence.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Defence.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Defence</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[2].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[2].Rank}</Text>
@@ -167,7 +168,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Herblore')}>
-							<Image source={require('../../assets/Skill_Icons/Herblore.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Herblore.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Herblore</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[16].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[16].Rank}</Text>
@@ -175,7 +176,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Fishing')}>
-							<Image source={require('../../assets/Skill_Icons/Fishing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Fishing.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Fishing</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[11].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[11].Rank}</Text>
@@ -184,7 +185,7 @@ import cUser  from '../Classes/CurrentUser';
 					</View>
 					<View style={styles.statBar}>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Ranged.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Ranged.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Ranged</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[4].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[4].Rank}</Text>
@@ -192,7 +193,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>						
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Thieving')}>
-							<Image source={require('../../assets/Skill_Icons/Thieving.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Thieving.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Thieving</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[19].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[19].Rank}</Text>
@@ -200,7 +201,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Cooking')}>
-							<Image source={require('../../assets/Skill_Icons/Cooking.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Cooking.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Cooking</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[12].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[12].Rank}</Text>
@@ -210,7 +211,7 @@ import cUser  from '../Classes/CurrentUser';
 					<View style={styles.statBar}>
 					<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Prayer')}>
-							<Image source={require('../../assets/Skill_Icons/Prayer.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Prayer.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Prayer</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[6].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[6].Rank}</Text>
@@ -218,7 +219,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Crafting')}>
-							<Image source={require('../../assets/Skill_Icons/Crafting.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Crafting.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Crafting</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[13].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[13].Rank}</Text>
@@ -227,7 +228,7 @@ import cUser  from '../Classes/CurrentUser';
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Firemaking')}>
 							<Image
-								source={require('../../assets/Skill_Icons/Firemaking.png')}
+								source={require('../../../assets/Skill_Icons/Firemaking.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
 							/>
 							<Text style={styles.statText}>Firemaking</Text>
@@ -239,7 +240,7 @@ import cUser  from '../Classes/CurrentUser';
 					<View style={styles.statBar}>
 					<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Magic')}>
-							<Image source={require('../../assets/Skill_Icons/Magic.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Magic.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Magic</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[7].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[7].Rank}</Text>
@@ -247,7 +248,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Fletching')}>
-							<Image source={require('../../assets/Skill_Icons/Fletching.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Fletching.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Fletching</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[10].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[10].Rank}</Text>
@@ -256,7 +257,7 @@ import cUser  from '../Classes/CurrentUser';
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Woodcutting')}>
 							<Image
-								source={require('../../assets/Skill_Icons/Woodcutting.png')}
+								source={require('../../../assets/Skill_Icons/Woodcutting.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
 							/>
 							<Text style={styles.statText}>Woodcutting</Text>
@@ -269,7 +270,7 @@ import cUser  from '../Classes/CurrentUser';
 					<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Runecrafting')}>
 							<Image
-								source={require('../../assets/Skill_Icons/Runecrafting.png')}
+								source={require('../../../assets/Skill_Icons/Runecrafting.png')}
 								style={{ maxHeight: 50, maxWidth: 50 }}
 							/>
 							<Text style={styles.statText}>Runecrafting</Text>
@@ -278,7 +279,7 @@ import cUser  from '../Classes/CurrentUser';
 							<Text style={styles.statText}>XP: {this.stats.playerStats[21].XP}</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Slayer.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Slayer.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Slayer</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[19].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[19].Rank}</Text>
@@ -286,7 +287,7 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Farming')}>
-							<Image source={require('../../assets/Skill_Icons/Farming.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Farming.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Farming</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[20].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[20].Rank}</Text>
@@ -296,7 +297,7 @@ import cUser  from '../Classes/CurrentUser';
 					<View style={styles.statBar}>
 					<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Construction')}>
-							<Image source={require('../../assets/Skill_Icons/Construction.png')} style={{ maxHeight: 50, maxWidth: 50 }}/>
+							<Image source={require('../../../assets/Skill_Icons/Construction.png')} style={{ maxHeight: 50, maxWidth: 50 }}/>
 							<Text style={styles.statText}>Construction</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[22].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[22].Rank}</Text>
@@ -304,14 +305,14 @@ import cUser  from '../Classes/CurrentUser';
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}
                         onPress={() => this.props.navigation.navigate('Hunter')}>
-							<Image source={require('../../assets/Skill_Icons/Hunter.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Hunter.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>Hunter</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[23].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[23].Rank}</Text>
 							<Text style={styles.statText}>XP: {this.stats.playerStats[23].XP}</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={styles.statItem}>
-							<Image source={require('../../assets/Skill_Icons/Skills.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
+							<Image source={require('../../../assets/Skill_Icons/Skills.png')} style={{ maxHeight: 50, maxWidth: 50 }} />
 							<Text style={styles.statText}>TotalLevel</Text>
 							<Text style={styles.statText}>Level: {this.stats.playerStats[0].Level}</Text>
 							<Text style={styles.statText}>Rank: {this.stats.playerStats[0].Rank}</Text>

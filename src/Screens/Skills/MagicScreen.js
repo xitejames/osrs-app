@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class ThievingScreen extends React.Component {
+export default class MagicScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Thieving Screen </Text>		
+            <Text> Magic Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,25 @@ export default class ThievingScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Thieving");
-        this.state.currentExperience = cUser.findSkillExperience("Thieving");
-        this.state.levelToGet = cUser.findSkillLevel("Thieving");
-        this.state.experianceToGet = cUser.findSkillExperience("Thieving");
+        this.state.currentLevel = cUser.findSkillLevel("Magic");
+        this.state.currentExperience = cUser.findSkillExperience("Magic");
+        this.state.levelToGet = cUser.findSkillLevel("Magic");
+        this.state.experianceToGet = cUser.findSkillExperience("Magic");
         this.updateSkill();
 
     }
 
 
     updateSkill(){
-        Levels.setCurrentSkill('Thieving');
+        Levels.setCurrentSkill('Magic');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Thieving");
-        this.state.currentExperience = cUser.findSkillExperience("Thieving");
-        this.state.levelToGet = cUser.findSkillLevel("Thieving");
-        this.state.experianceToGet = cUser.findSkillExperience("Thieving");
+        this.state.currentLevel = cUser.findSkillLevel("Magic");
+        this.state.currentExperience = cUser.findSkillExperience("Magic");
+        this.state.levelToGet = cUser.findSkillLevel("Magic");
+        this.state.experianceToGet = cUser.findSkillExperience("Magic");
         this.updateSkill();
     }
 
@@ -65,7 +65,7 @@ export default class ThievingScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Thieving level: </Text>
+                        <Text style={styles.textItem}>Magic level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +76,7 @@ export default class ThievingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Thieving experience: </Text>
+                        <Text style={styles.textItem} >Magic experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +87,7 @@ export default class ThievingScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Thieving level to get: </Text>
+                        <Text style={styles.textItem}>Magic level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +98,7 @@ export default class ThievingScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Thieving experience to get: </Text>
+                        <Text style={styles.textItem}>Magic experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -112,8 +112,8 @@ export default class ThievingScreen extends React.Component {
 
                 <View style={styles.container}>   
                     <FlatList
-                        data={this.state.itemCurrent}             
-                        extraData={this.state}            
+                        data={this.state.itemCurrent}    
+                        extraData={this.state}                     
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,   
+        fontSize: 15,    
         color: '#FF0'      
 
     },

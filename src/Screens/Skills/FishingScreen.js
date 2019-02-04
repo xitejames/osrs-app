@@ -9,20 +9,20 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../Classes/CurrentUser';
-import Levels from '../Classes/levelbrackets';
+import cUser  from '../../Classes/CurrentUser';
+import Levels from '../../Classes/levelbrackets';
 
 
 
 
 
-export default class MiningScreen extends React.Component {
+export default class FishingScreen extends React.Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../assets/osrs.png')}
+            <Image source={require('../../../assets/osrs.png')}
             style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> MiningPage </Text>		
+            <Text> Fishing Screen </Text>		
         </View>,
         
     };	
@@ -37,25 +37,25 @@ export default class MiningScreen extends React.Component {
             itemCurrent: {},
         };
         
-        this.state.currentLevel = cUser.findSkillLevel("Mining");
-        this.state.currentExperience = cUser.findSkillExperience("Mining");
-        this.state.levelToGet = cUser.findSkillLevel("Mining");
-        this.state.experianceToGet = cUser.findSkillExperience("Mining");
+        this.state.currentLevel = cUser.findSkillLevel("Fishing");
+        this.state.currentExperience = cUser.findSkillExperience("Fishing");
+        this.state.levelToGet = cUser.findSkillLevel("Fishing");
+        this.state.experianceToGet = cUser.findSkillExperience("Fishing");
         this.updateSkill();
 
     }
 
 
     updateSkill(){
-        Levels.setCurrentSkill('Mining');
+        Levels.setCurrentSkill('Fishing');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
     }
 
     resetAll(){
-        this.state.currentLevel = cUser.findSkillLevel("Mining");
-        this.state.currentExperience = cUser.findSkillExperience("Mining");
-        this.state.levelToGet = cUser.findSkillLevel("Mining");
-        this.state.experianceToGet = cUser.findSkillExperience("Mining");
+        this.state.currentLevel = cUser.findSkillLevel("Fishing");
+        this.state.currentExperience = cUser.findSkillExperience("Fishing");
+        this.state.levelToGet = cUser.findSkillLevel("Fishing");
+        this.state.experianceToGet = cUser.findSkillExperience("Fishing");
         this.updateSkill();
     }
 
@@ -65,7 +65,7 @@ export default class MiningScreen extends React.Component {
             showsVerticalScrollIndicator={true}>
                 <View styles={styles.navBar}>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Mining level: </Text>
+                        <Text style={styles.textItem}>Fishing level: </Text>
                         <TextInput
                         style={styles.inputText}                         
                         onChangeText={(currentLevel) => {
@@ -76,7 +76,7 @@ export default class MiningScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem} >Mining experience: </Text>
+                        <Text style={styles.textItem} >Fishing experience: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(currentExperience) => {
@@ -87,7 +87,7 @@ export default class MiningScreen extends React.Component {
                         ></TextInput>
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Mining level to get: </Text>
+                        <Text style={styles.textItem}>Fishing level to get: </Text>
                         <TextInput 
                         style={styles.inputText}
                         onChangeText={(levelToGet) => {
@@ -98,7 +98,7 @@ export default class MiningScreen extends React.Component {
                         ></TextInput>                    
                     </View>
                     <View style={styles.headItem}>
-                        <Text style={styles.textItem}>Mining experience to get: </Text>
+                        <Text style={styles.textItem}>Fishing experience to get: </Text>
                         <TextInput
                         style={styles.inputText}
                         onChangeText={(experianceToGet) => {
@@ -111,13 +111,13 @@ export default class MiningScreen extends React.Component {
                 </View>
 
                 <View style={styles.container}>   
-                        <FlatList
-                        data={this.state.itemCurrent}            
-                        extraData={this.state}             
+                    <FlatList
+                        data={this.state.itemCurrent}       
+                        extraData={this.state}                  
                         renderItem={({ item }) => (                           
                         <View style={styles.statItem}>
                                 <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
-                                <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
+                                <Text style={styles.textItem}>Level to mine: {`${item.Level }`}</Text>
                                 <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
                                 <Text style={styles.textItem}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                         </View>                
@@ -157,9 +157,9 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     textItem: {
-        fontSize: 15,    
+        fontSize: 15,   
         color: '#FF0'      
-
+ 
     },
     inputText: {
         fontSize: 15,   
