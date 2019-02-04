@@ -9,8 +9,8 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../components/CurrentUser';
-import Levels from '../components/levelbrackets';
+import cUser  from '../Classes/CurrentUser';
+import Levels from '../Classes/levelbrackets';
 
 
 

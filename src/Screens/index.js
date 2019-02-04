@@ -1,4 +1,5 @@
 import HomeScreen from './HomeScreen';
+import SkillScreen from './SkillScreen';
 import AgilityScreen from './AgilityScreen'
 import ConstructionScreen from './ConstructionScreen'
 import CookingScreen from './CookingScreen'
@@ -21,6 +22,7 @@ import WoodcuttingScreen from './WoodcuttingScreen'
 
 export { 
     HomeScreen, 
+    SkillScreen,
     AgilityScreen, 
     ConstructionScreen,  
     CookingScreen, 

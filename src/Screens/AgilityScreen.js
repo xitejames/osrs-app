@@ -8,8 +8,8 @@ import {
     FlatList,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import cUser  from '../components/CurrentUser';
-import Levels from '../components/levelbrackets';
+import cUser  from '../Classes/CurrentUser';
+import Levels from '../Classes/levelbrackets';
 
 
 
@@ -34,6 +34,7 @@ export default class AgilityScreen extends React.Component {
             currentLevel:'',
             currentExperience: '',
             itemCurrent: {},
+            currentImage: '',
 
         };
         
@@ -46,8 +47,16 @@ export default class AgilityScreen extends React.Component {
     }
 
     updateSkill(){
-        Levels.setCurrentSkill('Cooking');
+        Levels.setCurrentSkill('Agility');
         this.state.itemCurrent = Levels.getCurrentSkillTasks();
+    }
+
+    findImage(image){
+        test = image.split(' ').join('_')
+        newUrl = '../../assets/Skill_Items/Agility/'+test+ '.png'
+        this.currentImage = newUrl
+        console.log(newUrl)
+        return newUrl
     }
 
     resetAll(){
@@ -113,14 +122,23 @@ export default class AgilityScreen extends React.Component {
                             <FlatList
                             data={this.state.itemCurrent}  
                             extradata={this.state}                        
-                            renderItem={({ item }) => (                           
-                            <View style={styles.statItem}>
-                                    <Text style={styles.textItem}>Name: {`${item.Name }`} </Text>
-                                    <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
-                                    <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
-                                    <Text style={styles.textItem}>Actions Left: {
-                                        Levels.findActionsToLevel(Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
-                            </View>                
+                            renderItem={({ item }) => (                          
+                            <View style={styles.statBar} >                              
+                                
+                                <View style={styles.statItem}>
+                                        <Text style={styles.textItem}>
+                                            Name: {`${item.Name }`}                                             
+                                        </Text>
+                                        <Text style={styles.textItem}>Level to burn: {`${item.Level }`}</Text>
+                                        <Text style={styles.textItem}>Experience: {`${item.XP }`}</Text>
+                                        <Text style={styles.textItem}>Actions Left: {
+                                            Levels.findActionsToLevel(Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
+                                </View>  
+                                <View style={styles.statImage}>
+                                <Image source={require('../../assets/Skill_Items/Agility/Al_Kharid_Rooftop.png')}/>
+                                </View> 
+                            </View>                        
+                            
                             
                             )}  
                             keyExtractor={item => item.Name}
@@ -145,10 +163,17 @@ const styles = StyleSheet.create({
 	},
 	statBar: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
 	},
 	statItem: {
         margin: 10,
+        flex: 0.5,
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+    },
+    statImage: {
+        flex: 0.5,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     headItem: {
         marginLeft: 10,

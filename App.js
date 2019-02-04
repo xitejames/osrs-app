@@ -4,17 +4,50 @@ import {
   createStackNavigator,
   createAppContainer
 } from 'react-navigation';
-import HomeScreen from './src/Screens/HomeScreen'
-import MiningScreen from './src/Screens/MiningScreen'
-import AgilityScreen from './src/Screens/AgilityScreen';
-import SmithingScreen from './src/Screens/SmithingScreen';
+import { 
+  HomeScreen, 
+  SkillScreen,
+  AgilityScreen, 
+  ConstructionScreen,  
+  CookingScreen, 
+  CraftingScreen,
+  FarmingScreen, 
+  FiremakingScreen, 
+  FishingScreen,
+  FletchingScreen,
+  HerbloreScreen,
+  HunterScreen,
+  MagicScreen,
+  MiningScreen,
+  PrayerScreen,
+  RunecraftingScreen,
+  SmithingScreen,
+  ThievingScreen,
+  WoodcuttingScreen,
+
+} from './src/Screens'
 
 
 const RunescapeApp = createStackNavigator({
   Home: HomeScreen,   
-  Mining: MiningScreen,
+  Skill: SkillScreen,
   Agility: AgilityScreen,
+  Construction: ConstructionScreen,
+  Cooking: CookingScreen,
+  Crafting: CraftingScreen,
+  Farming: FarmingScreen,
+  Firemaking: FiremakingScreen,
+  Fishing: FishingScreen,
+  Fletching: FletchingScreen,
+  Herblore: HerbloreScreen,  
+  Hunter: HunterScreen,
+  Magic: MagicScreen,
+  Mining: MiningScreen,
+  Prayer: PrayerScreen,
+  Runecrafting: RunecraftingScreen,
   Smithing: SmithingScreen,
+  Thieving: ThievingScreen,
+  Woodcutting: WoodcuttingScreen,
 
 });
 
