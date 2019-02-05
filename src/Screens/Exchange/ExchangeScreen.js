@@ -4,11 +4,14 @@ import {
     Text,
     StyleSheet,
     Image,
-    TouchableOpacity,
+	TouchableOpacity,
+	TextInput,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import itemDB from '../../Classes/Exchange/itemDB'
 
-export default class QuestScreen extends Component {
+
+export default class ExchangeScreen extends Component {
     static 	navigationOptions = {
         headerTitle:
         <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -21,16 +24,45 @@ export default class QuestScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+			itemName: 'candle',
+			itemID: '36',
+			itemTestText: '',
+			reRender: false
         };
     }
+
+	onPress = () => {
+		itemDB.setItem(this.state.itemID);
+		itemDB.searchItem(itemDB.getItemID());
+		this.forceUpdate()
+	} 	
+
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>
-                    Quest Screen!!
+				<View style={styles.navBar}>				
+					<TextInput
+						style={{ maxWidth: 150}}
+						placeholderTextColor='black'
+    				underlineColorAndroid='black'
+						onChangeText={(itemID) => {
+							this.setState({ itemID });
+						}}
+						value={this.state.itemID}
+						placeholder="Username"
+						style={{ minWidth: 250 }}
+					/>
+					<TouchableOpacity onPress={this.onPress} >
+						<Icon name="search" size={30} />
+					</TouchableOpacity>
+				</View>
+                <Text>                    
+					{itemDB.getItemName()} has the id:{itemDB.getItemID()}
                 </Text>
+				<Image
+				style={{width: 50, height: 50}}
+				source={{uri: itemDB.getPic() }}/>
 
                 <View style={styles.tabBar}>
 					<TouchableOpacity style={styles.tabItem}
@@ -86,6 +118,17 @@ const styles = StyleSheet.create({
 		paddingTop: 4,
 		fontSize: 11,
 		color: '#FF0'
+	},
+	navBar: {
+		paddingTop: 25,
+		height: 100,
+		elevation: 3,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between'
+	},
+	navRight: {
+		flexDirection: 'row'
 	},
 	 
 });

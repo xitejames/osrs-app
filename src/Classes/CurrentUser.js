@@ -54,7 +54,7 @@ class CurrentUser extends React.Component {
                 { Name: 'Strength', Rank: '0', Level: '0', XP: '0' },
                 { Name: 'Hitpoints', Rank: '0', Level: '0', XP: '0' },
                 { Name: 'Ranged', Rank: '0', Level: '0', XP: '0' },
-                { Name: 'prayer', Rank: '0', Level: '0', XP: '0' },
+                { Name: 'Prayer', Rank: '0', Level: '0', XP: '0' },
                 { Name: 'Magic', Rank: '0', Level: '0', XP: '0' },
                 { Name: 'Cooking', Rank: '0', Level: '0', XP: '0' },
                 { Name: 'Woodcutting', Rank: '0', Level: '0', XP: '0' },

@@ -1,0 +1,6 @@
+{
+    "ge": {
+        "graph": "http://services.runescape.com/m=itemdb_oldschool/api/graph/",
+        "information": "http://services.runescape.com/m=itemdb_oldschool/api/catalogue/detail.json?item="
+      }
+}
