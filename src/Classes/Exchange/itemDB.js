@@ -5,70 +5,93 @@ import * as ExchangeData from '../../../config.json'
 class ItemDB extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            newItem: 'start',
-            newItemID: 0,
+        this.props = {
+            newItem: 'CannonBall',
+            newItemID: 2,
             currentItem: {},
-            currPic: '',
-            currPrice:'',
+            currPic: 'http://services.runescape.com/m=itemdb_oldschool/1549278053419_obj_sprite.gif?id=2',
+            currPrice: '200',
         };        
     }
 
     getItemID(){
-        return this.state.newItemID
+        return this.props.newItemID
     }
     getItemName(){
-        return this.state.newItem
+        return this.props.newItem
     }
 
     setPic(newPicData){
-        this.state.currPic = newPicData
+        this.props.currPic = newPicData
+    }
+
+    getCurrentItem(){
+        return this.props.currentItem
+    }
+
+    getItemPrice(){
+        return this.props.currPrice 
     }
 
     getPic(){
-        return this.state.currPic
+        return this.props.currPic
     }
     
-    setItem(item) {   
-
+    async setItem(item) {   
+        let found = false
         if(isNaN(item)){
+            
             for(var k in table) {
-                if(table[k].name == item){
-                    this.state.newItem = table[k].name
-                    this.state.newItemID = table[k].id
+                let check1 = table[k].name + '', check2 = item+ ''
+
+                if(check1.toLowerCase() == check2.toLowerCase() ){
+                    await this.searchItem(table[k].id)
+                    found = true
                 }
 
             }
         }else if(!isNaN(item)){
             for(var k in table) {
                 if(table[k].id == item){
-                    this.state.newItem = table[k].name
-                    this.state.newItemID = table[k].id
+                    await this.searchItem(table[k].id)
+                    found = true
                 }
-
-      
             }
-        } else {
-            console.log("Not a valid item ingame ")
         }
+        if(!found)
+        console.log("NO ITEM FOUND")
     }
 
     getPic(){
-       return this.state.currPic
+       return this.props.currPic
     }
 
     searchItem = async (currItem) => {
 		let hsUrl = ExchangeData.ge.information
-		return fetch(`${hsUrl}${currItem}`).then((response) => response.json()).then((body) => {
-          
-            this.state.currentItem = body
-            this.state.currPic = body.item.icon
-            this.state.currPrice = body.item.current.price
+		return fetch(`${hsUrl}${currItem}`).then((response) => response.json()).then((body) => {          
+            this.props.currentItem = body
+            this.props.currPic = body.item.icon
+            this.props.newItem = body.item.name
+            this.props.newItemID = body.item.id 
+            this.props.currPrice = body.item.current.price
+            this.getGraph(body.item.id)
 
 		}).catch(function(err) {
 			console.log(err)
 		});
-	};
+    };
+
+    getGraph = async (currItem) => {
+		let hsUrl = ExchangeData.ge.graph
+		return fetch(`${hsUrl}${currItem}${'.json'}`).then((response) => response.json()).then((body) => {          
+
+            console.log(body)
+
+		}).catch(function(err) {
+			console.log(err)
+		});
+    };
+
 	
     
 }

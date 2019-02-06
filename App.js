@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet,} from 'react-native';
 import {
   createStackNavigator,
   createAppContainer
@@ -25,19 +24,14 @@ import {
   WoodcuttingScreen,
 
 } from './src/Screens/Skills'
-
-import {   
-  HomeScreen
-} from './src/Screens'
-
-import {   
-  QuestScreen
-} from './src/Screens/Quests'
-
+import {HomeScreen} from './src/Screens'
+import {QuestScreen} from './src/Screens/Quests'
+import {ExchangeScreen} from './src/Screens/Exchange'
 
 const RunescapeApp = createStackNavigator({
   Home: HomeScreen,   
   Quest: QuestScreen,
+  Exchange: ExchangeScreen,
   Skill: SkillScreen,
   Agility: AgilityScreen,
   Construction: ConstructionScreen,

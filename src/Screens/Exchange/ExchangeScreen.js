@@ -6,6 +6,7 @@ import {
     Image,
 	TouchableOpacity,
 	TextInput,
+	Button,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import itemDB from '../../Classes/Exchange/itemDB'
@@ -24,19 +25,15 @@ export default class ExchangeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			itemName: 'candle',
-			itemID: '36',
-			itemTestText: '',
-			reRender: false
+			searchItemName: 'Candle',
+			changed: false
         };
     }
 
-	onPress = () => {
-		itemDB.setItem(this.state.itemID);
-		itemDB.searchItem(itemDB.getItemID());
-		this.forceUpdate()
-	} 	
-
+	async searchItem(){
+		await itemDB.setItem(this.state.searchItemName) 
+		this.setState({ changed: !this.state.changed })
+	  };
 
     render() {
         return (
@@ -46,24 +43,25 @@ export default class ExchangeScreen extends Component {
 						style={{ maxWidth: 150}}
 						placeholderTextColor='black'
     				underlineColorAndroid='black'
-						onChangeText={(itemID) => {
-							this.setState({ itemID });
+						onChangeText={(searchItemName) => {
+							this.setState({ searchItemName });
 						}}
-						value={this.state.itemID}
-						placeholder="Username"
+						value={this.state.searchItemName}
+						placeholder="Id or Name"
 						style={{ minWidth: 250 }}
 					/>
-					<TouchableOpacity onPress={this.onPress} >
-						<Icon name="search" size={30} />
+					<TouchableOpacity onPress={() => this.searchItem()}>
+						<Icon name="search" size={60} />
 					</TouchableOpacity>
 				</View>
-                <Text>                    
-					{itemDB.getItemName()} has the id:{itemDB.getItemID()}
-                </Text>
+
+				<Text>Item Name: {itemDB.getItemName()}</Text>		
+				<Text>Item Id: {itemDB.getItemID()}</Text>		
+				<Text>Item Price: {itemDB.getItemPrice()}</Text>		
+				<Text>Item Image</Text>	
 				<Image
 				style={{width: 50, height: 50}}
-				source={{uri: itemDB.getPic() }}/>
-
+				source={{uri: itemDB.getPic()}}/>
                 <View style={styles.tabBar}>
 					<TouchableOpacity style={styles.tabItem}
 						onPress={() => this.props.navigation.navigate('Home')}>			
@@ -97,8 +95,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     	backgroundColor: '#625341',
     },
-    buttons: {
-        margin: 30,
+    buttonStyle: {
+		height: 60,
+		position: 'absolute',
     },  	
     tabBar: {
 		height: 60,
