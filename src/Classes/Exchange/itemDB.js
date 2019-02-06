@@ -11,6 +11,8 @@ class ItemDB extends React.Component {
             currentItem: {},
             currPic: 'http://services.runescape.com/m=itemdb_oldschool/1549278053419_obj_sprite.gif?id=2',
             currPrice: '200',
+            dailyPrice: {},
+            averagePrice: {},
         };        
     }
 
@@ -82,10 +84,28 @@ class ItemDB extends React.Component {
     };
 
     getGraph = async (currItem) => {
-		let hsUrl = ExchangeData.ge.graph
-		return fetch(`${hsUrl}${currItem}${'.json'}`).then((response) => response.json()).then((body) => {          
+        let hsUrl = ExchangeData.ge.graph
+        
+        
+        return fetch(`${hsUrl}${currItem}${'.json'}`).then((response) => response.json()).then((body) => {          
+           
+        this.props.dailyPrice = body.daily
+        this.props.averagePrice = body.average
+        
 
-            console.log(body)
+        for (var key in body.daily) {
+            console.log("Key: " + key);
+            console.log("Value: " + body.daily[key]);
+        }
+
+    
+        console.log()
+
+
+        for (var i = 0; i < body.daily.length; i++){    
+            console.log(this.props.dailyPrice[i])        
+        }
+
 
 		}).catch(function(err) {
 			console.log(err)
