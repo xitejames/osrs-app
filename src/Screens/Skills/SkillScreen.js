@@ -11,19 +11,10 @@ import {
 	FlatList,
  } from 'react-native';
 import cUser  from '../../Classes/CurrentUser';
-import StatIcon from '../../components/stat_icon/StatIcon'
+import StatIcon from '../../Components/Stat_icon/StatIcon'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
     export default class SkillScreen extends React.Component {	
-		static 	navigationOptions = {
-			headerTitle:
-			<View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-				<Image source={require('../../../assets/osrs.png')}
-				style={{ maxHeight: 60, maxWidth: 130}} />
-				<Text> Skills Screen </Text>		
-			</View>,
-			
-		};	
 
         constructor(props) {
             super(props);
@@ -101,11 +92,11 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 					</TouchableOpacity>
 				</View>
 
-				<ImageBackground
+				{/* <ImageBackground
 					source={require('../../../assets/Skill_Icons/Inventory.png')}
 					style={styles.imgBackground}
 					resizeMode="stretch"
-				>
+				> */}
 					<View
 						style={{
 							height: 110,
@@ -372,7 +363,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 							/>
 						</TouchableOpacity>
 					</View>
-				</ImageBackground>
+				{/* </ImageBackground> */}
 
 
 				<View style={styles.tabBar}>
@@ -405,7 +396,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#625341'
+		backgroundColor: '#fff'
 	},
 	navBar: {
 		paddingTop: 25,
@@ -432,7 +423,7 @@ const styles = StyleSheet.create({
 	},
 	statText: {
 		fontSize: 11,
-		color: '#FF0'
+		color: '#000'
 	},
 	imgBackground: {
 		width: '100%',
@@ -459,7 +450,7 @@ const styles = StyleSheet.create({
 	tabTitle: {
 		paddingTop: 4,
 		fontSize: 11,
-		color: '#FF0'
+		color: '#000'
 	},
 
 });

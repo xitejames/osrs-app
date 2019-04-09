@@ -1,5 +1,5 @@
 {
-  "name": "empty-project-template",
+  "name": "runescape-project",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
@@ -9,16 +9,19 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "@types/react-navigation": "^2.13.8",
-    "cheerio": "^1.0.0-rc.2",
-    "expo": "^31.0.2",
-    "expo-cli": "^2.7.1",
-    "fetch": "^1.1.0",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-native-gesture-handler": "^1.0.12",
-    "react-native-vector-icons": "^6.0.2",
-    "react-navigation": "^3.0.8"
+    "@expo/vector-icons": "^9.0.0",
+    "cheerio-without-node-native": "^0.20.2",
+    "expo": "^32.0.4",
+    "expo-constants": "^2.0.1",
+    "expo-font": "^2.0.0",
+    "htmlparser2-without-node-native": "^3.9.2",
+    "native-base": "^2.11.0",
+    "react": "^16.8.1",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-native": "^0.57.8",
+    "react-native-fence-html": "^1.0.6",
+    "react-native-svg-charts": "^5.2.0",
+    "react-navigation": "^3.1.5"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

@@ -9,30 +9,31 @@ import {
 	Button,
 } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import itemDB from '../../Classes/Exchange/itemDB'
-
+import itemDB from '../../api/itemDB'
+import Chart from '../../Components/Chart/Chart'
+import styles from '../../Styles/style'
 
 export default class ExchangeScreen extends Component {
-    static 	navigationOptions = {
-        headerTitle:
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../../assets/osrs.png')}
-            style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Home Screen </Text>		
-        </View>,
-        
-    };	
+
     constructor(props) {
         super(props);
         this.state = {
 			searchItemName: 'Candle',
-			changed: false
+			changed: false,
+			searching: true,
+			graphData: []
         };
     }
 
 	async searchItem(){
+		this.setState({ searching: true })
 		await itemDB.setItem(this.state.searchItemName) 
-		this.setState({ changed: !this.state.changed })
+		const id = await itemDB.getItemID()
+		const graphData = await itemDB.getGraphData(id)
+		const length = graphData.length-1
+		// console.log(graphData.slice(Math.max(length - 10, 1)))
+		const lastTen = graphData.slice(Math.max(length - 10, 1))
+		this.setState({ changed: !this.state.changed, graphData: lastTen, searching: false})
 	  };
 
     render() {
@@ -61,7 +62,14 @@ export default class ExchangeScreen extends Component {
 				<Text>Item Image</Text>	
 				<Image
 				style={{width: 50, height: 50}}
-				source={{uri: itemDB.getPic()}}/>
+				source={{uri: itemDB.getPic()}}
+				/>
+				{/* { this.state.graphData.length > 0 && console.log('this.state.graphData') }
+				{ this.state.graphData.length > 0 && console.log(this.state.graphData) } */}
+				{ !this.state.searching && 
+				   this.state.graphData.length > 0 && 
+				   <Chart gData={this.state.graphData} />}
+				
                 <View style={styles.tabBar}>
 					<TouchableOpacity style={styles.tabItem}
 						onPress={() => this.props.navigation.navigate('Home')}>			
@@ -89,45 +97,3 @@ export default class ExchangeScreen extends Component {
     }      
 
 }
-const styles = StyleSheet.create({
-	container: {
-        flex: 1,
-        flexDirection: 'column',
-    	backgroundColor: '#625341',
-    },
-    buttonStyle: {
-		height: 60,
-		position: 'absolute',
-    },  	
-    tabBar: {
-		height: 60,
-		borderTopWidth: 0.5,
-		flexDirection: 'row',
-		justifyContent: 'space-around',
-		position: 'absolute',
-		left:0,
-		bottom:0,
-		right:0,
-	},
-	tabItem: {
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	tabTitle: {
-		paddingTop: 4,
-		fontSize: 11,
-		color: '#FF0'
-	},
-	navBar: {
-		paddingTop: 25,
-		height: 100,
-		elevation: 3,
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between'
-	},
-	navRight: {
-		flexDirection: 'row'
-	},
-	 
-});

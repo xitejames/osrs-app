@@ -17,16 +17,7 @@ import Levels from '../../Classes/levelbrackets';
 
 
 export default class HunterScreen extends React.Component {
-    static 	navigationOptions = {
-        headerTitle:
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../../assets/osrs.png')}
-            style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Hunter Screen </Text>		
-        </View>,
-        
-    };	
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -157,7 +148,7 @@ const styles = StyleSheet.create({
 	container: {
         flex: 1,
         flexDirection: 'column',
-    	backgroundColor: '#625341',
+    	backgroundColor: '#fff',
 	},
 	navBar: {
 
@@ -182,7 +173,7 @@ const styles = StyleSheet.create({
     },
     inputText: {
         fontSize: 15,   
-        backgroundColor: '#625200' 
+        backgroundColor: '#add8e6' 
     },
     tabBar: {
 		height: 60,
@@ -201,6 +192,6 @@ const styles = StyleSheet.create({
 	tabTitle: {
 		paddingTop: 4,
 		fontSize: 11,
-		color: '#FF0'
+		color: '#000'
 	},
 });

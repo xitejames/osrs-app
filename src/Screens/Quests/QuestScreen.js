@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
 	container: {
         flex: 1,
         flexDirection: 'column',
-    	backgroundColor: '#625341',
+    	backgroundColor: '#FFF',
     },
     buttons: {
         margin: 30,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 	tabTitle: {
 		paddingTop: 4,
 		fontSize: 11,
-		color: '#FF0'
+		color: '#000'
 	},
 	 
 });

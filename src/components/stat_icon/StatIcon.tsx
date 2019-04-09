@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     },
     statText: {
         fontSize: 11,
-        color: '#FF0'
+        color: '#000'
     },
 
 });
