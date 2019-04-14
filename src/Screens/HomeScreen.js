@@ -1,36 +1,31 @@
 import React, { Component } from 'react';
-import { Content, Footer, Container, Row, Col, Button, Header } from "native-base";
-import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-native'
+import { 
+  Content, 
+  Footer, 
+  Container, 
+  Row,
+  Col, 
+  Button, 
+  Header 
+} from "native-base";
+import { 
+  View, 
+  Text, 
+  ActivityIndicator,
+  Dimensions,
+  TouchableOpacity,
+  Image
+} from 'react-native'
 import * as Expo from "expo";
 import { PageFooter } from '../Components/Footer'
 import { HomescreenCard } from '../Components/Cards'
 import updates from '../api/Updates'
+import styles from '../Styles/style'
+import { homeNavigationOptions } from '../Components/Headers/homeHeader'
 
 export default class HomeScreen extends Component {
-	static navigationOptions = {
-    headerTransparent: true,
-    headerBackgroundTransitionPreset: 'fade',
-    headerTitle: (
-      <View>
-        <Button onPress={() => navigation.navigate('Home')} transparent
-          accessible={true}
-          accessibilityLabel="Home"
-          accessibilityHint={"Navigate to the home screen"}
-          accessibilityRole="button"
-          accessibilityTraits="button"
-        >
-          <Text
-            style={{ fontFamily: 'Roboto_medium', color: '#000', fontSize: 18 }}
-          >
-            Home
-        </Text>
-        </Button>
-      </View>
-    ),
-  }
-
-
-
+  static navigationOptions = homeNavigationOptions
+  
   constructor(props) {
     super(props);
   }
@@ -112,10 +107,4 @@ export default class HomeScreen extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  },
-});
 

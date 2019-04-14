@@ -5,7 +5,8 @@ import {
 	TouchableOpacity,
 	TextInput,
 	ActivityIndicator,
-	Picker
+	Picker,
+	Dimensions
 } from "react-native";
 import {
 	Container,
@@ -14,7 +15,7 @@ import {
 	Row,
 	Header,
 	Footer,
-	Button,
+	Label,
 	Item
   } from 'native-base'
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -22,7 +23,7 @@ import itemDB from '../../api/itemDB'
 import Chart from '../../Components/Chart/Chart'
 import styles from '../../Styles/style'
 import { PageFooter } from '../../Components/Footer'
-import { navigationOptions } from '../../Headers/header'
+import { navigationOptions } from '../../Components/Headers/header'
 
 export default class ExchangeScreen extends Component {
 	static navigationOptions = navigationOptions
@@ -79,40 +80,83 @@ export default class ExchangeScreen extends Component {
 		const id = await itemDB.getItemID()
 		const graphData = await itemDB.getGraphData(id)
 		const length = graphData.length
+		const newMonth ='6 Months'
 		// console.log(graphData.slice(Math.max(length - 10, 1)))
 		// const lastTen = graphData.slice(Math.max(length - 10, 1))
-		this.setState({ changed: !this.state.changed, daysData: length, searching: false, currData: graphData, itemId: id})
+		this.setState({ changed: !this.state.changed, daysData: length, searching: false, currData: graphData, itemId: id, months: newMonth })
 	  };
 
     render() {
+		const { width, height } = Dimensions.get('window')
+		const maxWidth = width / 3.5
+		const maxHeight = height / 4.5
         return (
             <Container style={styles.container}>
-				<Header/>
+				<Header
+					transparent
+					translucent={true}
+					noShadow={true}
+					iosBarStyle="light-content"
+					>
+					<View
+					style={{
+						position: 'absolute',
+						width: maxWidth,
+						height: maxHeight,
+						right: 0,
+						top: -34
+					}}
+					>
+					</View>
+				</Header>
 				<Content>
-					<Row style={styles.navBar}>				
-						<TextInput
-							style={styles.inputBox}
-							placeholderTextColor='black'
-							underlineColorAndroid='black'
-							onChangeText={(searchItemName) => {
-								this.setState({ searchItemName });
-							}}
-							value={this.state.searchItemName}
-							placeholder="Id or Name"
-						/>
-						<TouchableOpacity onPress={() => this.searchItem()}>
-							<Icon name="search" size={60} />
-						</TouchableOpacity>
-					</Row>
 
-					<Text style={styles.text}>Item Name: {itemDB.getItemName()}</Text>		
-					<Text style={styles.text}>Item Id: {itemDB.getItemID()}</Text>		
-					<Text style={styles.text}>Item Price: {itemDB.getItemPrice()}</Text>		
-					<Text style={styles.text}>Item Image</Text>	
-					<Image
-					style={{width: 50, height: 50}}
-					source={{uri: itemDB.getPic()}}
-					/>
+
+					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
+						<Label style={styles.text} >
+						Search Item
+						</Label>
+						<Row style={styles.navBar}>				
+							<TextInput
+								style={styles.inputBox}
+								placeholderTextColor='black'
+								underlineColorAndroid='black'
+								onChangeText={(searchItemName) => {
+									this.setState({ searchItemName });
+								}}
+								value={this.state.searchItemName}
+								placeholder="Id or Name"
+							/>
+							<TouchableOpacity onPress={() => this.searchItem()}>
+								<Icon name="search" size={30} />
+							</TouchableOpacity>
+						</Row>
+					</Item>
+
+
+
+					
+					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
+						<Label style={styles.text} >
+						Item Image
+						</Label>
+						<Image
+						style={{width: 50, height: 50}}
+						source={{uri: itemDB.getPic()}}
+						/>
+					</Item>
+					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
+						<Label style={styles.text} >
+						Item Name
+						</Label>
+						<Text style={styles.text}> {itemDB.getItemName()} </Text>	
+					</Item>
+					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
+						<Label style={styles.text} >
+						Item Price
+						</Label>
+						<Text style={styles.text}> {itemDB.getItemPrice()}gp </Text>	
+					</Item>
 
 					{ this.state.searching && 
 						<ActivityIndicator 
@@ -140,11 +184,11 @@ export default class ExchangeScreen extends Component {
 							mode="dropdown"
 							onValueChange={(itemValue, itemIndex) => this.currDataUpdate(itemValue)} >
 							<Picker.Item label="1 Month" value={30} />
-							<Picker.Item label="2 Month" value={60} />
-							<Picker.Item label="3 Month" value={90} />
-							<Picker.Item label="4 Month" value={120} />
-							<Picker.Item label="5 Month" value={150} />
-							<Picker.Item label="6 Month" value={180} />
+							<Picker.Item label="2 Months" value={60} />
+							<Picker.Item label="3 Months" value={90} />
+							<Picker.Item label="4 Months" value={120} />
+							<Picker.Item label="5 Months" value={150} />
+							<Picker.Item label="6 Months" value={180} />
 						</Picker> }
 						<Chart gData={this.state.currData} />
 					</View>

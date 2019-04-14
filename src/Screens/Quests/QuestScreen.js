@@ -1,91 +1,65 @@
-import React, { Component } from "react";
-import {
-    View,
-    Text,
-    StyleSheet,
-    Image,
-    TouchableOpacity,
-} from "react-native";
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, { Component } from 'react';
+import { Content, Footer, Container, Row, Col, Button, Header } from "native-base";
+import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-native'
+import { PageFooter } from '../../Components/Footer'
+import { navigationOptions } from '../../Components/Headers/header'
+import styles from '../../Styles/style'
 
 export default class QuestScreen extends Component {
-    static 	navigationOptions = {
-        headerTitle:
-        <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source={require('../../../assets/osrs.png')}
-            style={{ maxHeight: 60, maxWidth: 130}} />
-            <Text> Home Screen </Text>		
-        </View>,
-        
-    };	
-    constructor(props) {
-        super(props);
-        this.state = {
+	static navigationOptions = navigationOptions
 
-        };
+  constructor(props) {
+    super(props);
+  }
+  state = {
+    loaded: false,
+  }
+  async componentWillMount() {
+    this.setState({ loaded: true });
+  }
+
+  render() {
+    const { width, height } = Dimensions.get('window')
+    const maxWidth = width / 3.5
+    const maxHeight = height / 4.5
+    const { loaded } = this.state
+    if(!loaded){
+      return(
+        <View>
+          <Text>Loading</Text>
+          <ActivityIndicator />
+        </View>
+      );
     }
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text>
-                    Quest Screen!!
-                </Text>
+    return(
+    <Container style={styles.container}>
+      <Header
+          transparent
+          translucent={true}
+          noShadow={true}
+          iosBarStyle="light-content"
+        >
+        <View
+          style={{
+            position: 'absolute',
+            width: maxWidth,
+            height: maxHeight,
+            right: 0,
+            top: -34
+          }}
+        >
+        </View>
+      </Header>
+    <Content >
 
-                <View style={styles.tabBar}>
-					<TouchableOpacity style={styles.tabItem}
-						onPress={() => this.props.navigation.navigate('Home')}>			
-						<Icon name="home" size={30} />
-						<Text style={styles.tabTitle}>Home</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.tabItem}
-						onPress={() => this.props.navigation.navigate('Quest')}>			
-						<Icon name="book" size={30} />
-						<Text style={styles.tabTitle}>Quests</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.tabItem}
-						onPress={() => this.props.navigation.navigate('Skill')}>			
-						<Icon name="show-chart" size={30} />
-						<Text style={styles.tabTitle}>Skills</Text>
-					</TouchableOpacity>
-					<TouchableOpacity style={styles.tabItem}
-						onPress={() => this.props.navigation.navigate('Exchange')}>			
-						<Icon name="shop" size={30} />
-						<Text style={styles.tabTitle}>GE prices</Text>
-					</TouchableOpacity>
-				</View>		
-            </View>         
-        );
-    }      
-
+      </Content>
+      <Footer>
+            <PageFooter nav={this.props.navigation}/>  
+      </Footer>
+    </Container>
+    );
+  }
 }
-const styles = StyleSheet.create({
-	container: {
-        flex: 1,
-        flexDirection: 'column',
-    	backgroundColor: '#FFF',
-    },
-    buttons: {
-        margin: 30,
-    },  	
-    tabBar: {
-		height: 60,
-		borderTopWidth: 0.5,
-		flexDirection: 'row',
-		justifyContent: 'space-around',
-		position: 'absolute',
-		left:0,
-		bottom:0,
-		right:0,
-	},
-	tabItem: {
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	tabTitle: {
-		paddingTop: 4,
-		fontSize: 11,
-		color: '#000'
-	},
-	 
-});
+
+

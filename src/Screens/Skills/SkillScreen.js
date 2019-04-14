@@ -15,7 +15,7 @@ import StatIcon from '../../Components/Stat_icon/StatIcon'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../Styles/style'
 import { PageFooter } from '../../Components/Footer'
-import { navigationOptions } from '../../Headers/header'
+import { navigationOptions } from '../../Components/Headers/header'
 
     export default class SkillScreen extends React.Component {	
 		static navigationOptions = navigationOptions

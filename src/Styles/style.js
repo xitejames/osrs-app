@@ -6,8 +6,8 @@ export default StyleSheet.create({
 
     container: {
 		flex: 1,
-		paddingTop: 15,
-		paddingHorizontal: 20,
+		paddingTop: 5,
+		paddingHorizontal: 10,
         flexDirection: 'column',
 		backgroundColor: '#FFF',
 		
@@ -42,6 +42,7 @@ export default StyleSheet.create({
 		position: 'absolute',
     },  	
     tabBar: {
+		backgroundColor: '#FFF',
 		height: 60,
 		borderTopWidth: 0.5,
 		flexDirection: 'row',
