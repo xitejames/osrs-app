@@ -6,11 +6,11 @@ class ItemDB extends React.Component {
     constructor(props) {
         super(props);
         this.props = {
-            newItem: 'CannonBall',
-            newItemID: 2,
+            newItem: '',
+            newItemID: 0,
             currentItem: {},
             currPic: 'http://services.runescape.com/m=itemdb_oldschool/1549278053419_obj_sprite.gif?id=2',
-            currPrice: '200',
+            currPrice: '',
             dailyPrice: {},
             averagePrice: {},
         };        

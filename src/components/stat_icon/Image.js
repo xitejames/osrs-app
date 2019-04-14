@@ -1,5 +1,6 @@
 import React from 'react';
 import {  Image, } from 'react-native';
+import styles from '../../Styles/style'
 
 class SkillIcon extends React.Component {
 
@@ -8,99 +9,99 @@ class SkillIcon extends React.Component {
         switch(skillName){
             case 'Attack':return(
                 <Image source={require('../../../assets/Skill_Icons/Attack.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Agility':return(
                 <Image source={require('../../../assets/Skill_Icons/Agility.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Construction':return(
                 <Image source={require('../../../assets/Skill_Icons/Construction.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Cooking':return(
                 <Image source={require('../../../assets/Skill_Icons/Cooking.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Crafting':return(
                 <Image source={require('../../../assets/Skill_Icons/Crafting.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Defence':return(
                 <Image source={require('../../../assets/Skill_Icons/Defence.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Farming':return(
                 <Image source={require('../../../assets/Skill_Icons/Farming.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Firemaking':return(
                 <Image source={require('../../../assets/Skill_Icons/Firemaking.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Fletching':return(
                 <Image source={require('../../../assets/Skill_Icons/Fletching.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );  
             case 'Fishing':return(
                 <Image source={require('../../../assets/Skill_Icons/Fishing.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );            
             case 'Herblore':return(
                 <Image source={require('../../../assets/Skill_Icons/Herblore.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Hitpoints':return(
                 <Image source={require('../../../assets/Skill_Icons/Hitpoints.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Hunter':return(
                 <Image source={require('../../../assets/Skill_Icons/Hunter.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Magic':return(
                 <Image source={require('../../../assets/Skill_Icons/Magic.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Mining':return(
                 <Image source={require('../../../assets/Skill_Icons/Mining.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Prayer':return(
                 <Image source={require('../../../assets/Skill_Icons/Prayer.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Ranged':return(
                 <Image source={require('../../../assets/Skill_Icons/Ranged.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Runecrafting':return(
                 <Image source={require('../../../assets/Skill_Icons/Runecrafting.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Slayer':return(
                 <Image source={require('../../../assets/Skill_Icons/Slayer.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Overall':return(
                 <Image source={require('../../../assets/Skill_Icons/Skills.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Smithing':return(
                 <Image source={require('../../../assets/Skill_Icons/Smithing.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Strength':return(
                 <Image source={require('../../../assets/Skill_Icons/Strength.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Thieving':return(
                 <Image source={require('../../../assets/Skill_Icons/Thieving.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
             case 'Woodcutting':return(
                 <Image source={require('../../../assets/Skill_Icons/Woodcutting.png')} 
-                style={{ maxHeight: 50, maxWidth: 50 }} />
+                style={styles.baseIcon} />
             );
         }
     }

@@ -1,13 +1,36 @@
 import React, { Component } from 'react';
-import { Content, Footer, Container, Row, Col } from "native-base";
-import { StyleSheet, View, Text, ActivityIndicator } from 'react-native'
+import { Content, Footer, Container, Row, Col, Button, Header } from "native-base";
+import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-native'
 import * as Expo from "expo";
 import { PageFooter } from '../Components/Footer'
 import { HomescreenCard } from '../Components/Cards'
 import updates from '../api/Updates'
 
 export default class HomeScreen extends Component {
-   
+	static navigationOptions = {
+    headerTransparent: true,
+    headerBackgroundTransitionPreset: 'fade',
+    headerTitle: (
+      <View>
+        <Button onPress={() => navigation.navigate('Home')} transparent
+          accessible={true}
+          accessibilityLabel="Home"
+          accessibilityHint={"Navigate to the home screen"}
+          accessibilityRole="button"
+          accessibilityTraits="button"
+        >
+          <Text
+            style={{ fontFamily: 'Roboto_medium', color: '#000', fontSize: 18 }}
+          >
+            Home
+        </Text>
+        </Button>
+      </View>
+    ),
+  }
+
+
+
   constructor(props) {
     super(props);
   }
@@ -26,6 +49,9 @@ export default class HomeScreen extends Component {
   }
 
   render() {
+    const { width, height } = Dimensions.get('window')
+    const maxWidth = width / 3.5
+    const maxHeight = height / 4.5
     const { fontLoaded, articles, loaded } = this.state
     if(!loaded){
       return(
@@ -46,6 +72,23 @@ export default class HomeScreen extends Component {
 
     return(
     <Container style={styles.container}>
+      <Header
+          transparent
+          translucent={true}
+          noShadow={true}
+          iosBarStyle="light-content"
+        >
+        <View
+          style={{
+            position: 'absolute',
+            width: maxWidth,
+            height: maxHeight,
+            right: 0,
+            top: -34
+          }}
+        >
+        </View>
+      </Header>
     <Content >
       <Row style={{ marginTop: 30 }}>
         <Col>
@@ -62,7 +105,9 @@ export default class HomeScreen extends Component {
         </Col>
       </Row>
       </Content>
-      <PageFooter nav={this.props.navigation}/>
+      <Footer>
+            <PageFooter nav={this.props.navigation}/>  
+      </Footer>
     </Container>
     );
   }

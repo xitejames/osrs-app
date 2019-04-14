@@ -1,67 +1,36 @@
-import { StyleSheet,} from 'react-native';
-import {
-  createStackNavigator,
-  createAppContainer
-} from 'react-navigation';
-import { 
-  SkillScreen,
-  AgilityScreen, 
-  ConstructionScreen,  
-  CookingScreen, 
-  CraftingScreen,
-  FarmingScreen, 
-  FiremakingScreen, 
-  FishingScreen,
-  FletchingScreen,
-  HerbloreScreen,
-  HunterScreen,
-  MagicScreen,
-  MiningScreen,
-  PrayerScreen,
-  RunecraftingScreen,
-  SmithingScreen,
-  ThievingScreen,
-  WoodcuttingScreen,
+import RunescapeApp from './Navigation'
+import * as Expo from 'expo'
+import React, { Component } from 'react'
+import { Root } from 'native-base'
+import { createAppContainer } from 'react-navigation'
+const AppContainer = createAppContainer(RunescapeApp)
 
-} from './src/Screens/Skills'
-import {HomeScreen} from './src/Screens'
-import {QuestScreen} from './src/Screens/Quests'
-import {ExchangeScreen} from './src/Screens/Exchange'
-
-const RunescapeApp = createStackNavigator({
-  Home: HomeScreen,   
-  Quest: QuestScreen,
-  Exchange: ExchangeScreen,
-  Skill: SkillScreen,
-  Agility: AgilityScreen,
-  Construction: ConstructionScreen,
-  Cooking: CookingScreen,
-  Crafting: CraftingScreen,
-  Farming: FarmingScreen,
-  Firemaking: FiremakingScreen,
-  Fishing: FishingScreen,
-  Fletching: FletchingScreen,
-  Herblore: HerbloreScreen,  
-  Hunter: HunterScreen,
-  Magic: MagicScreen,
-  Mining: MiningScreen,
-  Prayer: PrayerScreen,
-  Runecrafting: RunecraftingScreen,
-  Smithing: SmithingScreen,
-  Thieving: ThievingScreen,
-  Woodcutting: WoodcuttingScreen,
-
-});
-
-const App = createAppContainer(RunescapeApp);
-//exports the code above
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default class App extends Component {
+    constructor(props) {
+      super(props)
+      this.state = {
+        fontLoaded: false,
+        isReady: false,
+      }
+    }
+    
+    async componentWillMount() {      
+        await Expo.Font.loadAsync({
+            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
+        })
+        this.setState({ fontLoaded: true, isReady: true })
+    }
+    
+    render() {
+      if (!this.state.fontLoaded) {
+        return (
+          <Expo.AppLoading/>
+        )
+      }
+      return (
+        <Root>
+          <AppContainer />
+        </Root>
+      )
+    }
+  }

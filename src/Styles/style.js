@@ -1,19 +1,42 @@
 'use strict';
 
-var React = require('react-native');
+import { StyleSheet } from 'react-native';
 
-var {
-  StyleSheet,
-} = React;
-
-module.exports = StyleSheet.create({
+export default StyleSheet.create({
 
     container: {
 		flex: 1,
+		paddingTop: 15,
 		paddingHorizontal: 20,
         flexDirection: 'column',
-    	backgroundColor: '#FFF',
+		backgroundColor: '#FFF',
+		
+	},
+    statBar: {
+		height: 110,
+		backgroundColor: '#fff',
+        flexDirection: 'row',
     },
+    statItem: {
+        alignItems: 'center',
+        width: 80
+    },
+    statText: {
+        fontSize: 11,
+        color: '#000'
+    },
+	text:{
+		fontFamily: 'Roboto_medium',
+		fontSize: 16
+	}, 
+	inputBox:{
+		width: '100%',
+		maxWidth: '70%'
+	},
+	baseIcon:{
+		maxHeight: 57, 
+		maxWidth: 57
+	},
     buttonStyle: {
 		height: 60,
 		position: 'absolute',

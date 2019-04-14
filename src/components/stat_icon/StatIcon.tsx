@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, } from 'react-native';
 import skillIcon from './Image'
+import styles from '../../Styles/style'
 
 interface IProps {
     currentName?: string
@@ -28,23 +29,5 @@ class StatIcon extends Component<IProps> {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    statBar: {
-        height: 110,
-        flexDirection: 'row',
-        justifyContent: 'space-around'
-    },
-    statItem: {
-        alignItems: 'center',
-        width: 80
-    },
-    statText: {
-        fontSize: 11,
-        color: '#000'
-    },
-
-});
-
 
 export default StatIcon;
