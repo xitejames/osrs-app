@@ -155,7 +155,7 @@ export default class ExchangeScreen extends Component {
 						<Label style={styles.text} >
 						Item Price
 						</Label>
-						<Text style={styles.text}> {itemDB.getItemPrice()}gp </Text>	
+						<Text style={styles.text}> {itemDB.getItemPrice()} </Text>	
 					</Item>
 
 					{ this.state.searching && 

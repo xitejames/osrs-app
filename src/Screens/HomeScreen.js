@@ -85,7 +85,7 @@ export default class HomeScreen extends Component {
         </View>
       </Header>
     <Content >
-      <Row style={{ marginTop: 30 }}>
+      <Row style={{ marginTop: 15, marginBottom: 15 }}>
         <Col>
           <Text style={{
             fontSize: 16,

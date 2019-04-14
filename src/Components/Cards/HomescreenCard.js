@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, TouchableOpacity, Linking } from 'react-native';
+import { Image, TouchableOpacity, Linking, FlatList } from 'react-native';
 import { 
   Container, 
   View, 
@@ -17,9 +17,9 @@ export default class HomescreenCard extends Component {
     return (
       <Container style={{ backgroundColor: '#fff' }}>
         <View >
-          <DeckSwiper
-            dataSource={this.props.articles}
-            renderItem={item =>
+          <FlatList
+            data={this.props.articles}
+            renderItem={({ item }) =>
             <TouchableOpacity
               onPress={()=>{
               Linking.openURL(item.link)
@@ -47,6 +47,7 @@ export default class HomescreenCard extends Component {
               </Card>
             </TouchableOpacity>
             }
+            keyExtractor={item => item.title}
           />
         </View>
       </Container>
