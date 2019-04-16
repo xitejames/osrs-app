@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, Button  } from "native-base";
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { Image, View, TouchableOpacity } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../Styles/style'
@@ -11,23 +11,38 @@ class PageFooter extends Component {
       <View style={styles.tabBar}>
       <TouchableOpacity style={styles.tabItem}
         onPress={() => this.props.navigation.navigate('Home')}>			
-        <Icon name="home" size={30} />
+        <Image 
+        style={styles.imageIcon}
+        source={require('../../../assets/Teleport_to_House_icon.png')} />
         <Text style={styles.tabTitle}>Home</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.tabItem}
         onPress={() => this.props.navigation.navigate('Quest')}>			
-        <Icon name="book" size={30} />
+        <Image 
+        style={styles.imageIcon}
+        source={require('../../../assets/Quest_start_icon.png')} />
         <Text style={styles.tabTitle}>Quests</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.tabItem}
         onPress={() => this.props.navigation.navigate('Skill')}>			
-        <Icon name="show-chart" size={30} />
+        <Image 
+        style={styles.imageIcon}
+        source={require('../../../assets/Skill_Icons/Stats_icon.png')} />
         <Text style={styles.tabTitle}>Skills</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.tabItem}
         onPress={() => this.props.navigation.navigate('Exchange')}>			
-        <Icon name="shop" size={30} />
+        <Image 
+        style={styles.imageIcon}
+        source={require('../../../assets/Coins.png')} />
         <Text style={styles.tabTitle}>GE prices</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem}
+        onPress={() => this.props.navigation.navigate('WorldMap')}>			
+        <Image 
+        style={styles.imageIcon}
+        source={require('../../../assets/wordMapIcon.png')} />
+        <Text style={styles.tabTitle}>WorldMap</Text>
       </TouchableOpacity>
       </View>		
     );

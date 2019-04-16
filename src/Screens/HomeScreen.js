@@ -5,7 +5,6 @@ import {
   Container, 
   Row,
   Col, 
-  Button, 
   Header 
 } from "native-base";
 import { 
@@ -13,8 +12,6 @@ import {
   Text, 
   ActivityIndicator,
   Dimensions,
-  TouchableOpacity,
-  Image
 } from 'react-native'
 import * as Expo from "expo";
 import { PageFooter } from '../Components/Footer'
@@ -73,26 +70,13 @@ export default class HomeScreen extends Component {
           noShadow={true}
           iosBarStyle="light-content"
         >
-        <View
-          style={{
-            position: 'absolute',
-            width: maxWidth,
-            height: maxHeight,
-            right: 0,
-            top: -34
-          }}
-        >
+        <View style={styles.header}>
         </View>
       </Header>
-    <Content >
+    <Content style={styles.content}>
       <Row style={{ marginTop: 15, marginBottom: 15 }}>
         <Col>
-          <Text style={{
-            fontSize: 16,
-            textDecorationLine: 'underline',
-            fontFamily: 'Roboto_medium',
-            color: '#000',
-          }}>
+          <Text style={styles.h1Text}>
             Recent News
           </Text> 
           {articles !== undefined && 

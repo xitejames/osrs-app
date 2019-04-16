@@ -18,7 +18,7 @@ export const homeNavigationOptions = ({ navigation }) => {
           accessibilityTraits="button"
         >
           <Text
-            style={{ fontFamily: 'Roboto_medium', color: '#000', fontSize: 18 }}
+            style={styles.title}
           >
             { routeName }
         </Text>
@@ -30,8 +30,8 @@ export const homeNavigationOptions = ({ navigation }) => {
       <TouchableOpacity style={{ alignItems: 'center',	justifyContent: 'center', paddingRight:15 }}
         onPress={() => navigation.navigate('WorldMap')}>			
         <Image 
-        style={{ width: 40, height: 40 }}
-        source={require('../../../assets/wordMapIcon.png')} />
+        style={styles.imageIcon}
+        source={require('../../../assets/Options.png')} />
       </TouchableOpacity>
       </View>
     ),

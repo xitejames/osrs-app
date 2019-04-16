@@ -6,7 +6,6 @@ import {
 	TextInput,
 	ActivityIndicator,
 	Picker,
-	Dimensions
 } from "react-native";
 import {
 	Container,
@@ -31,7 +30,7 @@ export default class ExchangeScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-			searchItemName: 'Candle',
+			searchItemName: '',
 			itemId: 0,
 			changed: false,
 			searching: false,
@@ -44,6 +43,18 @@ export default class ExchangeScreen extends Component {
 	}
 
 
+	componentWillUnmount(){
+		this.setState({			
+		searchItemName: '',
+		itemId: 0,
+		changed: false,
+		searching: false,
+		graphData: [],
+		currData: [],
+		months: '',
+		daysData: 0,
+		pickDate: false })
+	}
 
 	async currDataUpdate(days){
 		this.setState({ searching: true, pickDate: false })
@@ -87,9 +98,6 @@ export default class ExchangeScreen extends Component {
 	  };
 
     render() {
-		const { width, height } = Dimensions.get('window')
-		const maxWidth = width / 3.5
-		const maxHeight = height / 4.5
         return (
             <Container style={styles.container}>
 				<Header
@@ -98,15 +106,7 @@ export default class ExchangeScreen extends Component {
 					noShadow={true}
 					iosBarStyle="light-content"
 					>
-					<View
-					style={{
-						position: 'absolute',
-						width: maxWidth,
-						height: maxHeight,
-						right: 0,
-						top: -34
-					}}
-					>
+					<View style={styles.header}>
 					</View>
 				</Header>
 				<Content>
@@ -125,7 +125,7 @@ export default class ExchangeScreen extends Component {
 									this.setState({ searchItemName });
 								}}
 								value={this.state.searchItemName}
-								placeholder="Id or Name"
+								placeholder="Item Name"
 							/>
 							<TouchableOpacity onPress={() => this.searchItem()}>
 								<Icon name="search" size={30} />

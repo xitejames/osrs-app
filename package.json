@@ -21,6 +21,7 @@
     "react-native": "^0.57.8",
     "react-native-fence-html": "^1.0.6",
     "react-native-svg-charts": "^5.2.0",
+    "react-native-svg-uri": "^1.2.3",
     "react-navigation": "^3.1.5"
   },
   "devDependencies": {

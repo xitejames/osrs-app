@@ -11,11 +11,12 @@ import {
   Left, 
   Body
 } from 'native-base';
+import styles from '../../Styles/style';
 
 export default class HomescreenCard extends Component {
   render() {
     return (
-      <Container style={{ backgroundColor: '#fff' }}>
+      <Container style={styles.container}>
         <View >
           <FlatList
             data={this.props.articles}
@@ -25,24 +26,30 @@ export default class HomescreenCard extends Component {
               Linking.openURL(item.link)
             }}>
               <Card style={{
-                  elevation: 3 
+                  elevation: 3,
                 }}>
-                <CardItem>
+                <CardItem style={{ backgroundColor: '#D3D3D3' }} >
                   <Left>
                     <Thumbnail source={require('../../../assets/icon.png')} />
                     <Body>
-                      <Text>{item.title}</Text>
-                      <Text>{item.time}</Text>
+                      <Text
+                      style={styles.text}
+                      >{item.title}</Text>
+                      <Text
+                      style={styles.text}
+                      >{item.time}</Text>
                     </Body>
                   </Left>
                 </CardItem>
-                <CardItem cardBody>
+                <CardItem cardBody style={{ backgroundColor: '#D3D3D3' }}>
                   <Image 
                   style={{ height: 150, flex: 1 }} 
                   source={{uri:item.image}} />
                 </CardItem>
-                <CardItem>
-                  <Text>{item.summary}</Text>
+                <CardItem style={{ backgroundColor: '#D3D3D3' }}>
+                  <Text
+                  style={styles.text}
+                  >{item.summary}</Text>
                 </CardItem>
               </Card>
             </TouchableOpacity>
