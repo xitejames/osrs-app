@@ -75,7 +75,7 @@ class ItemDB extends React.Component {
             this.props.currPic = body.item.icon
             this.props.newItem = body.item.name
             this.props.newItemID = body.item.id 
-            this.props.currPrice = body.item.current.price + 'gp'
+            this.props.currPrice = body.item.current.price + ' gp'
 		}).catch(function(err) {
 			console.log(err)
 		});

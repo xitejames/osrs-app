@@ -11,7 +11,7 @@ export default StyleSheet.create({
     container: {
 		flex: 1,
 		paddingTop: 5,
-		backgroundColor: '#D3D3D3',
+		backgroundColor: '#2b390e',
 	},
 	content: {
 		paddingTop: 5,
@@ -27,14 +27,28 @@ export default StyleSheet.create({
 	},
 	title:{
 		fontFamily: 'Roboto_medium', 
-		color: '#9400d3', 
+		color: '#FFFF00', 
 		fontSize: 22
+	},
+	searchInputContainer:{
+		flex: 1,
+		alignItems: 'center',
+		width: '100%',
+		flexDirection: 'row',
+		paddingLeft: 5,
+		elevation: 5
+	},
+	searchInput:{
+		width: '100%',
+		fontFamily: 'Roboto_medium',
+		fontSize: 16,
+		color: '#FFFF00'
 	},
 	h1Text:{
 		fontSize: 18,
 		textDecorationLine: 'underline',
 		fontFamily: 'Roboto_medium',
-		color: '#9400d3',
+		color: '#FFFF00',
 	},
 	imageIcon:{
 		width: 30, 
@@ -42,24 +56,31 @@ export default StyleSheet.create({
 	},
     statBar: {
 		height: 110,
-		backgroundColor: '#D3D3D3',
-        flexDirection: 'row',
+		backgroundColor: '#2b390e',
+		flexDirection: 'row'
     },
     statItem: {
-        alignItems: 'center',
+		alignItems: 'center',
+		paddingTop: 5,
+		paddingBottom: 5,
         width: 80
     },
     statText: {
         fontSize: 11,
-        color: '#9400d3'
+        color: '#FFFF00'
 	},
 	card:{
-		backgroundColor: '#D3D3D3'
+		backgroundColor: '#2b390e'
 	},
 	text:{
 		fontFamily: 'Roboto_medium',
 		fontSize: 16,
-		color: '#9400d3',
+		color: '#FFFF00',
+	}, 
+	outputText:{
+		fontFamily: 'Roboto_medium',
+		fontSize: 16,
+		color: '#FFFF00',
 	}, 
 	inputBox:{
 		width: '100%',
@@ -74,7 +95,7 @@ export default StyleSheet.create({
 		position: 'absolute',
     },  	
     tabBar: {
-		backgroundColor: '#D3D3D3',
+		backgroundColor: '#2b390e',
 		height: 60,
 		borderTopWidth: 0.5,
 		flexDirection: 'row',
@@ -91,10 +112,9 @@ export default StyleSheet.create({
 	tabTitle: {
 		paddingTop: 4,
 		fontSize: 11,
-		color: '#9400d3'
+		color: '#FFFF00'
 	},
 	navBar: {
-		paddingTop: 25,
 		height: 100,
 		elevation: 3,
 		flexDirection: 'row',

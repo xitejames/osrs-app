@@ -15,7 +15,8 @@ import {
 	Header,
 	Footer,
 	Label,
-	Item
+	Item,
+	Input
   } from 'native-base'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import itemDB from '../../api/itemDB'
@@ -109,34 +110,28 @@ export default class ExchangeScreen extends Component {
 					<View style={styles.header}>
 					</View>
 				</Header>
-				<Content>
-
-
+				<Content style={styles.content}>
 					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
 						<Label style={styles.text} >
 						Search Item
 						</Label>
 						<Row style={styles.navBar}>				
-							<TextInput
-								style={styles.inputBox}
-								placeholderTextColor='black'
-								underlineColorAndroid='black'
+						<View style={styles.searchInputContainer}>
+							<Input
+								placeholder="Search for a item..."
+								value={this.state.searchItemName}
 								onChangeText={(searchItemName) => {
 									this.setState({ searchItemName });
 								}}
-								value={this.state.searchItemName}
-								placeholder="Item Name"
+								returnKeyType="search"
+								onSubmitEditing={() => this.searchItem()}
+								placeholderTextColor="#FFFF00"
+								style={styles.searchInput}
 							/>
-							<TouchableOpacity onPress={() => this.searchItem()}>
-								<Icon name="search" size={30} />
-							</TouchableOpacity>
+						</View>
 						</Row>
-					</Item>
-
-
-
-					
-					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
+					</Item>					
+					<Item stackedLabel={true}>
 						<Label style={styles.text} >
 						Item Image
 						</Label>
@@ -149,13 +144,13 @@ export default class ExchangeScreen extends Component {
 						<Label style={styles.text} >
 						Item Name
 						</Label>
-						<Text style={styles.text}> {itemDB.getItemName()} </Text>	
+						<Text style={styles.outputText}> {itemDB.getItemName()} </Text>	
 					</Item>
 					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
 						<Label style={styles.text} >
 						Item Price
 						</Label>
-						<Text style={styles.text}> {itemDB.getItemPrice()} </Text>	
+						<Text style={styles.outputText}> {itemDB.getItemPrice()} </Text>	
 					</Item>
 
 					{ this.state.searching && 
@@ -171,9 +166,11 @@ export default class ExchangeScreen extends Component {
 	
 						
 						<View style={{ flexDirection: 'row' }} >
-							<Text style={styles.text} >{itemDB.getItemName()} price over {this.state.months} </Text>	
+							<Text style={styles.outputText} >{itemDB.getItemName()} price over {this.state.months} </Text>	
 							<TouchableOpacity onPress={() => this.setState({ pickDate: !this.state.pickDate })}>
-								<Icon name="today" size={30} />
+								<Icon name="today" 
+								style={{ color: '#FFFF00' }}
+								size={30} />
 							</TouchableOpacity>	
 						</View>
 						

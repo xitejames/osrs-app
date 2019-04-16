@@ -10,6 +10,15 @@ import {
 	ImageBackground,
 	FlatList,
  } from 'react-native';
+ import {
+	Container,
+	Content,
+	Header,
+	Footer,
+	Input,
+	Col,
+	Row
+ } from 'native-base'
 import cUser  from '../../Classes/CurrentUser';
 import StatIcon from '../../Components/Stat_icon/StatIcon'
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -37,7 +46,8 @@ import { navigationOptions } from '../../Components/Headers/header'
             this.setState({ stats: cUser.resetCurrent });
         };
     
-        searchUser = async (user) => {
+        searchUser = async () => {
+			const user = this.state.username
             {this.resetCurrent}
             let hsUrl = 'https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=';
             return fetch(`${hsUrl}${user}`).then((response) => response.text()).then((body) => {
@@ -77,291 +87,347 @@ import { navigationOptions } from '../../Components/Headers/header'
 		}
 
 	render() {
-		return (
-			<View style={styles.container}>
-				<ScrollView style={{ flex: 0.8 }} >
-					<View style={styles.navBar}>				
-						<TextInput
-							style={{ maxWidth: 150}}
-							placeholderTextColor='black'
-						underlineColorAndroid='black'
-							onChangeText={(username) => {
-								this.setState({ username });
-							}}
-							value={this.state.username}
-							placeholder="Username"
-							style={{ minWidth: 250 }}
-						/>
-						<TouchableOpacity onPress={this.onPress}>
-							<Icon name="search" size={30} />
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[1].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[1].Name}
-								currentRank={this.stats.playerStats[1].Rank}
-								currentLevel={this.stats.playerStats[1].Level}
-								currentXP={this.stats.playerStats[1].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[1].Name +'.png'}
-							/>
-						</TouchableOpacity>
 
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[4].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[4].Name}
-								currentRank={this.stats.playerStats[4].Rank}
-								currentLevel={this.stats.playerStats[4].Level}
-								currentXP={this.stats.playerStats[4].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[4].Name +'.png'}
-							/>
-						</TouchableOpacity>
-
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[15].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[15].Name}
-								currentRank={this.stats.playerStats[15].Rank}
-								currentLevel={this.stats.playerStats[15].Level}
-								currentXP={this.stats.playerStats[15].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[1].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-					<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[3].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[3].Name}
-								currentRank={this.stats.playerStats[3].Rank}
-								currentLevel={this.stats.playerStats[3].Level}
-								currentXP={this.stats.playerStats[3].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[3].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[17].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[17].Name}
-								currentRank={this.stats.playerStats[17].Rank}
-								currentLevel={this.stats.playerStats[17].Level}
-								currentXP={this.stats.playerStats[17].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[17].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[14].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[14].Name}
-								currentRank={this.stats.playerStats[14].Rank}
-								currentLevel={this.stats.playerStats[14].Level}
-								currentXP={this.stats.playerStats[14].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[14].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[2].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[2].Name}
-								currentRank={this.stats.playerStats[2].Rank}
-								currentLevel={this.stats.playerStats[2].Level}
-								currentXP={this.stats.playerStats[2].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[2].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[16].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[16].Name}
-								currentRank={this.stats.playerStats[16].Rank}
-								currentLevel={this.stats.playerStats[16].Level}
-								currentXP={this.stats.playerStats[16].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[16].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[11].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[11].Name}
-								currentRank={this.stats.playerStats[11].Rank}
-								currentLevel={this.stats.playerStats[11].Level}
-								currentXP={this.stats.playerStats[11].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[11].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[5].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[5].Name}
-								currentRank={this.stats.playerStats[5].Rank}
-								currentLevel={this.stats.playerStats[5].Level}
-								currentXP={this.stats.playerStats[5].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[5].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[19].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[19].Name}
-								currentRank={this.stats.playerStats[19].Rank}
-								currentLevel={this.stats.playerStats[19].Level}
-								currentXP={this.stats.playerStats[19].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[12].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[12].Name}
-								currentRank={this.stats.playerStats[12].Rank}
-								currentLevel={this.stats.playerStats[12].Level}
-								currentXP={this.stats.playerStats[12].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[12].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[6].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[6].Name}
-								currentRank={this.stats.playerStats[6].Rank}
-								currentLevel={this.stats.playerStats[6].Level}
-								currentXP={this.stats.playerStats[6].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[6].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[13].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[13].Name}
-								currentRank={this.stats.playerStats[13].Rank}
-								currentLevel={this.stats.playerStats[13].Level}
-								currentXP={this.stats.playerStats[13].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[13].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[8].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[8].Name}
-								currentRank={this.stats.playerStats[8].Rank}
-								currentLevel={this.stats.playerStats[8].Level}
-								currentXP={this.stats.playerStats[8].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[8].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[7].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[7].Name}
-								currentRank={this.stats.playerStats[7].Rank}
-								currentLevel={this.stats.playerStats[7].Level}
-								currentXP={this.stats.playerStats[7].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[10].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[10].Name}
-								currentRank={this.stats.playerStats[10].Rank}
-								currentLevel={this.stats.playerStats[10].Level}
-								currentXP={this.stats.playerStats[10].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[10].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[9].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[9].Name}
-								currentRank={this.stats.playerStats[9].Rank}
-								currentLevel={this.stats.playerStats[9].Level}
-								currentXP={this.stats.playerStats[9].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[9].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[21].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[21].Name}
-								currentRank={this.stats.playerStats[21].Rank}
-								currentLevel={this.stats.playerStats[21].Level}
-								currentXP={this.stats.playerStats[21].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[21].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[19].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[19].Name}
-								currentRank={this.stats.playerStats[19].Rank}
-								currentLevel={this.stats.playerStats[19].Level}
-								currentXP={this.stats.playerStats[19].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
-							/>
-						</TouchableOpacity>
-						<TouchableOpacity style={styles.statItem}
-						onPress={() => this.props.navigation.navigate(this.stats.playerStats[20].Name)}>
-							<StatIcon							
-								currentName={this.stats.playerStats[20].Name}
-								currentRank={this.stats.playerStats[20].Rank}
-								currentLevel={this.stats.playerStats[20].Level}
-								currentXP={this.stats.playerStats[20].XP}
-								currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[20].Name +'.png'}
-							/>
-						</TouchableOpacity>
-					</View>
-					<View style={styles.statBar}>
-							<TouchableOpacity style={styles.statItem}
-							onPress={() => this.props.navigation.navigate(this.stats.playerStats[22].Name)}>
-								<StatIcon							
-									currentName={this.stats.playerStats[22].Name}
-									currentRank={this.stats.playerStats[22].Rank}
-									currentLevel={this.stats.playerStats[22].Level}
-									currentXP={this.stats.playerStats[22].XP}
-									currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[22].Name +'.png'}
-								/>
-							</TouchableOpacity>
-							<TouchableOpacity style={styles.statItem}
-							onPress={() => this.props.navigation.navigate(this.stats.playerStats[23].Name)}>
-								<StatIcon							
-									currentName={this.stats.playerStats[23].Name}
-									currentRank={this.stats.playerStats[23].Rank}
-									currentLevel={this.stats.playerStats[23].Level}
-									currentXP={this.stats.playerStats[23].XP}
-									currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[23].Name +'.png'}
-								/>
-							</TouchableOpacity>
-							<TouchableOpacity style={styles.statItem}
-							onPress={() => this.props.navigation.navigate(this.stats.playerStats[0].Name)}>
-								<StatIcon							
-									currentName={this.stats.playerStats[0].Name}
-									currentRank={this.stats.playerStats[0].Rank}
-									currentLevel={this.stats.playerStats[0].Level}
-									currentXP={this.stats.playerStats[0].XP}
-									currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[0].Name +'.png'}
-								/>
-							</TouchableOpacity>
-						</View>
-				</ScrollView>
-				<View style={{ backgroundColor: '#fff', flex: 0.2 }}>
-					<PageFooter nav={this.props.navigation}/>  	
+		return(    
+		<Container style={styles.container}>
+			<Header
+				transparent
+				translucent={true}
+				noShadow={true}
+				iosBarStyle="light-content"
+			  >
+			  <View style={styles.header}>
+			  </View>
+			</Header>
+		  <Content style={styles.content}>
+		  	<Row >				
+				<View style={styles.searchInputContainer}>
+					<Input
+						placeholder="Search for a item..."
+						value={this.state.username}
+						onChangeText={(username) => {
+							this.setState({ username });
+						}}
+						returnKeyType="search"
+						onSubmitEditing={() => this.searchUser()}
+						placeholderTextColor="#FFFF00"
+						style={styles.searchInput}
+					/>
 				</View>
-			</View>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[1].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[1].Name}
+							currentRank={this.stats.playerStats[1].Rank}
+							currentLevel={this.stats.playerStats[1].Level}
+							currentXP={this.stats.playerStats[1].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[1].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[4].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[4].Name}
+						currentRank={this.stats.playerStats[4].Rank}
+						currentLevel={this.stats.playerStats[4].Level}
+						currentXP={this.stats.playerStats[4].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[4].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[15].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[15].Name}
+						currentRank={this.stats.playerStats[15].Rank}
+						currentLevel={this.stats.playerStats[15].Level}
+						currentXP={this.stats.playerStats[15].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[15].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[3].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[3].Name}
+							currentRank={this.stats.playerStats[3].Rank}
+							currentLevel={this.stats.playerStats[3].Level}
+							currentXP={this.stats.playerStats[3].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[3].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[17].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[17].Name}
+						currentRank={this.stats.playerStats[17].Rank}
+						currentLevel={this.stats.playerStats[17].Level}
+						currentXP={this.stats.playerStats[17].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[17].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[14].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[14].Name}
+						currentRank={this.stats.playerStats[14].Rank}
+						currentLevel={this.stats.playerStats[14].Level}
+						currentXP={this.stats.playerStats[14].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[14].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[2].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[2].Name}
+							currentRank={this.stats.playerStats[2].Rank}
+							currentLevel={this.stats.playerStats[2].Level}
+							currentXP={this.stats.playerStats[2].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[2].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[16].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[16].Name}
+						currentRank={this.stats.playerStats[16].Rank}
+						currentLevel={this.stats.playerStats[16].Level}
+						currentXP={this.stats.playerStats[16].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[16].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[11].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[11].Name}
+						currentRank={this.stats.playerStats[11].Rank}
+						currentLevel={this.stats.playerStats[11].Level}
+						currentXP={this.stats.playerStats[11].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[11].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[5].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[5].Name}
+							currentRank={this.stats.playerStats[5].Rank}
+							currentLevel={this.stats.playerStats[5].Level}
+							currentXP={this.stats.playerStats[5].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[5].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[19].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[19].Name}
+						currentRank={this.stats.playerStats[19].Rank}
+						currentLevel={this.stats.playerStats[19].Level}
+						currentXP={this.stats.playerStats[19].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[8].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[8].Name}
+						currentRank={this.stats.playerStats[8].Rank}
+						currentLevel={this.stats.playerStats[8].Level}
+						currentXP={this.stats.playerStats[8].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[8].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[6].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[6].Name}
+							currentRank={this.stats.playerStats[6].Rank}
+							currentLevel={this.stats.playerStats[6].Level}
+							currentXP={this.stats.playerStats[6].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[6].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[13].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[13].Name}
+						currentRank={this.stats.playerStats[13].Rank}
+						currentLevel={this.stats.playerStats[13].Level}
+						currentXP={this.stats.playerStats[13].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[13].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[7].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[7].Name}
+						currentRank={this.stats.playerStats[7].Rank}
+						currentLevel={this.stats.playerStats[7].Level}
+						currentXP={this.stats.playerStats[7].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[7].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[7].Name}
+							currentRank={this.stats.playerStats[7].Rank}
+							currentLevel={this.stats.playerStats[7].Level}
+							currentXP={this.stats.playerStats[7].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[10].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[10].Name}
+						currentRank={this.stats.playerStats[10].Rank}
+						currentLevel={this.stats.playerStats[10].Level}
+						currentXP={this.stats.playerStats[10].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[10].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[9].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[9].Name}
+						currentRank={this.stats.playerStats[9].Rank}
+						currentLevel={this.stats.playerStats[9].Level}
+						currentXP={this.stats.playerStats[9].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[9].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[21].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[21].Name}
+							currentRank={this.stats.playerStats[21].Rank}
+							currentLevel={this.stats.playerStats[21].Level}
+							currentXP={this.stats.playerStats[21].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[21].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[19].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[19].Name}
+						currentRank={this.stats.playerStats[19].Rank}
+						currentLevel={this.stats.playerStats[19].Level}
+						currentXP={this.stats.playerStats[19].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[20].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[20].Name}
+						currentRank={this.stats.playerStats[20].Rank}
+						currentLevel={this.stats.playerStats[20].Level}
+						currentXP={this.stats.playerStats[20].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[20].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			<Row style={{ paddingBottom: 20 }}>
+				<Col>
+					<TouchableOpacity style={styles.statItem}
+					onPress={() => this.props.navigation.navigate(this.stats.playerStats[22].Name)}>
+						<StatIcon							
+							currentName={this.stats.playerStats[22].Name}
+							currentRank={this.stats.playerStats[22].Rank}
+							currentLevel={this.stats.playerStats[22].Level}
+							currentXP={this.stats.playerStats[22].XP}
+							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[22].Name +'.png'}
+						/>
+					</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[23].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[23].Name}
+						currentRank={this.stats.playerStats[23].Rank}
+						currentLevel={this.stats.playerStats[23].Level}
+						currentXP={this.stats.playerStats[23].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[23].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+				<Col>
+				<TouchableOpacity style={styles.statItem}
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[0].Name)}>
+					<StatIcon							
+						currentName={this.stats.playerStats[0].Name}
+						currentRank={this.stats.playerStats[0].Rank}
+						currentLevel={this.stats.playerStats[0].Level}
+						currentXP={this.stats.playerStats[0].XP}
+						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[0].Name +'.png'}
+					/>
+				</TouchableOpacity>
+				</Col>
+			</Row>
+			</Content>
+			<Footer>
+				<PageFooter nav={this.props.navigation}/>  
+			</Footer>
+		  </Container>
+
+		)
 
 
-		);
 	}
 }
 

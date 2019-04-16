@@ -28,7 +28,7 @@ export default class HomescreenCard extends Component {
               <Card style={{
                   elevation: 3,
                 }}>
-                <CardItem style={{ backgroundColor: '#D3D3D3' }} >
+                <CardItem style={styles.card} >
                   <Left>
                     <Thumbnail source={require('../../../assets/icon.png')} />
                     <Body>
@@ -41,12 +41,12 @@ export default class HomescreenCard extends Component {
                     </Body>
                   </Left>
                 </CardItem>
-                <CardItem cardBody style={{ backgroundColor: '#D3D3D3' }}>
+                <CardItem cardBody style={styles.card}>
                   <Image 
                   style={{ height: 150, flex: 1 }} 
                   source={{uri:item.image}} />
                 </CardItem>
-                <CardItem style={{ backgroundColor: '#D3D3D3' }}>
+                <CardItem style={styles.card}>
                   <Text
                   style={styles.text}
                   >{item.summary}</Text>

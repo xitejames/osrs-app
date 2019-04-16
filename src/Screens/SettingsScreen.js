@@ -4,9 +4,8 @@ import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-nati
 import { PageFooter } from '../Components/Footer'
 import { navigationOptions } from '../Components/Headers/header'
 import styles from '../Styles/style'
-import { PictureZoom } from '../Components/PictureZoom/PictureZoom'
 
-export default class MapScreen extends Component {
+export default class SettingsScreen extends Component {
 	static navigationOptions = navigationOptions
 
   constructor(props) {
@@ -46,8 +45,8 @@ export default class MapScreen extends Component {
         >
         </View>
       </Header>
-      <Content style={styles.content}>
-        <PictureZoom/>
+    <Content style={styles.content}>
+
       </Content>
       <Footer>
             <PageFooter nav={this.props.navigation}/>  

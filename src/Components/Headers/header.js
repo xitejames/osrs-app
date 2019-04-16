@@ -21,7 +21,7 @@ export const navigationOptions = ({ navigation }) => {
         <Icon
             type="Feather"
             name="chevron-left"
-            style={{ color: '#000' }}
+            style={{ color: '#FFFF00' }}
         />
         </Button>
     </View>
@@ -46,7 +46,7 @@ export const navigationOptions = ({ navigation }) => {
     headerRight: (
       <View>
       <TouchableOpacity style={{ alignItems: 'center',	justifyContent: 'center', paddingRight:15 }}
-        onPress={() => navigation.navigate('WorldMap')}>			
+        onPress={() => navigation.navigate('Settings')}>			
         <Image 
         style={styles.imageIcon}
         source={require('../../../assets/Options.png')} />
