@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Text, Button  } from "native-base";
-import { Image, View, TouchableOpacity } from 'react-native'
+import { Image, View, TouchableOpacity, Linking } from 'react-native'
 import { withNavigation } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from '../../Styles/style'
@@ -38,7 +38,7 @@ class PageFooter extends Component {
         <Text style={styles.tabTitle}>GE prices</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.tabItem}
-        onPress={() => this.props.navigation.navigate('WorldMap')}>			
+        onPress={()=>{Linking.openURL('https://cdn.runescape.com/assets/img/external/oldschool/2019/newsposts/2019-01-10/osrs_world_map_jan4_2019.png')}}>
         <Image 
         style={styles.imageIcon}
         source={require('../../../assets/wordMapIcon.png')} />
@@ -48,5 +48,5 @@ class PageFooter extends Component {
     );
   }
 }
-
+//https://cdn.runescape.com/assets/img/external/oldschool/2019/newsposts/2019-01-10/osrs_world_map_jan4_2019.png
 export default withNavigation(PageFooter);
