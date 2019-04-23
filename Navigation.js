@@ -26,6 +26,7 @@ import {
 } from './src/Screens/Skills'
 import {
   HomeScreen,
+  MapScreen,
   SettingsScreen
 } from './src/Screens'
 import {QuestScreen} from './src/Screens/Quests'
@@ -53,7 +54,8 @@ const RunescapeApp = createStackNavigator({
   Smithing: SmithingScreen,
   Thieving: ThievingScreen,
   Woodcutting: WoodcuttingScreen,
-  Settings: SettingsScreen
+  Settings: SettingsScreen,
+  WorldMap: MapScreen
 
 });
 

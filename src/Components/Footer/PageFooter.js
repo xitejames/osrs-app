@@ -38,7 +38,8 @@ class PageFooter extends Component {
         <Text style={styles.tabTitle}>GE prices</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.tabItem}
-        onPress={()=>{Linking.openURL('https://cdn.runescape.com/assets/img/external/oldschool/2019/newsposts/2019-01-10/osrs_world_map_jan4_2019.png')}}>
+        // onPress={()=>{Linking.openURL('https://cdn.runescape.com/assets/img/external/oldschool/2019/newsposts/2019-01-10/osrs_world_map_jan4_2019.png')}}>
+        onPress={() => this.props.navigation.navigate('WorldMap')}>
         <Image 
         style={styles.imageIcon}
         source={require('../../../assets/wordMapIcon.png')} />

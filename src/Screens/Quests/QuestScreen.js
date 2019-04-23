@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
-import { Content, Footer, Container, Row, Col, Button, Header } from "native-base";
-import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-native'
+import { 
+  Content, 
+  Footer, 
+  Container, 
+  Header,
+  Row,
+  Col,
+  Item,
+ } from "native-base";
+import { 
+  FlatList,
+  View, 
+  Text, 
+  ActivityIndicator 
+} from 'react-native'
 import { PageFooter } from '../../Components/Footer'
 import { navigationOptions } from '../../Components/Headers/header'
 import styles from '../../Styles/style'
+import quests from '../../api/quests'
 
 export default class QuestScreen extends Component {
 	static navigationOptions = navigationOptions
@@ -13,16 +27,23 @@ export default class QuestScreen extends Component {
   }
   state = {
     loaded: false,
+    f2pQuestList: [],
+    p2pQuestList: []
+
   }
   async componentWillMount() {
-    this.setState({ loaded: true });
+    const f2p = await quests.findF2pQuests()
+    const p2p = await quests.findP2pQuests()
+    // console.log('F2p quests: ')
+    // console.log(f2p)
+    // console.log('P2P quests: ')
+    // console.log(p2p)
+    this.setState({ loaded: true, f2pQuestList: f2p, p2pQuestList: p2p });
   }
 
   render() {
-    const { width, height } = Dimensions.get('window')
-    const maxWidth = width / 3.5
-    const maxHeight = height / 4.5
-    const { loaded } = this.state
+    const { loaded, f2pQuestList, p2pQuestList  } = this.state
+
     if(!loaded){
       return(
         <View>
@@ -41,17 +62,91 @@ export default class QuestScreen extends Component {
           iosBarStyle="light-content"
         >
         <View
-          style={{
-            position: 'absolute',
-            width: maxWidth,
-            height: maxHeight,
-            right: 0,
-            top: -34
-          }}
+          style={styles.header}
         >
         </View>
       </Header>
-    <Content >
+
+      <Item style={{ height: 20, paddingHorizontal: 10, }} stackedLabel={true}>
+        <Row>  
+          <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+            <Text style={styles.tableText}>Name</Text>
+          </Col>      
+          <Col style={{ width: '25%', alignItems: 'center', paddingLeft: 3 }} >
+            <Text style={styles.tableText}>Difficulty</Text>
+          </Col>     
+          <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+            <Text style={styles.tableText}>Length</Text>
+          </Col>     
+          <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+            <Text style={styles.tableText}>Points</Text>
+          </Col>     
+        </Row>    
+      </Item>
+
+      <Content style={styles.content}>
+      <Row>  
+        <Col style={{ alignItems: 'center', paddingBottom: 20 }} >
+          <Text style={styles.textHeader}>Free To Play Quests</Text>
+        </Col>    
+      </Row>  
+
+      <FlatList
+      data={f2pQuestList}            
+      extraData={this.state}             
+      renderItem={({ item }) => (   
+        <Item style={{ marginBottom: 5 }} stackedLabel={true}>
+          <Row>  
+            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Name}`} </Text>
+            </Col>      
+            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Difficulty}`} </Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Length}`} </Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.QP}`} </Text>
+            </Col>     
+          </Row>    
+        </Item>
+          
+          )}  
+          keyExtractor={item => item.Name}
+      />
+
+      <Row>  
+        <Col style={{ alignItems: 'center', paddingVertical: 20 }} >
+          <Text style={styles.textHeader}>Members Quests</Text>
+        </Col>    
+      </Row>  
+
+
+      <FlatList
+      data={p2pQuestList}            
+      extraData={this.state}             
+      renderItem={({ item }) => (   
+        <Item style={{ marginBottom: 5 }} stackedLabel={true}>
+          <Row>  
+            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Name}`} </Text>
+            </Col>      
+            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Difficulty}`} </Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.Length}`} </Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>{`${item.QP}`} </Text>
+            </Col>     
+          </Row>    
+        </Item>
+          
+          )}  
+          keyExtractor={item => item.Name}
+      />
 
       </Content>
       <Footer>

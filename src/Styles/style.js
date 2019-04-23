@@ -58,7 +58,14 @@ export default StyleSheet.create({
 		height: 110,
 		backgroundColor: '#2b390e',
 		flexDirection: 'row'
-    },
+	},
+	textHeader: {
+		fontFamily: 'Roboto_medium',
+		fontSize: 20,
+		color: '#FFFF00',
+		paddingBottom: 20,
+		textDecorationLine: 'underline'
+	},
     statItem: {
 		alignItems: 'center',
 		paddingTop: 5,
@@ -75,6 +82,17 @@ export default StyleSheet.create({
 	text:{
 		fontFamily: 'Roboto_medium',
 		fontSize: 16,
+		color: '#FFFF00',
+	}, 
+	tableHeaderText:{
+		fontFamily: 'Roboto_medium',
+		fontSize: 18,
+		color: '#FFFF00',
+
+	}, 
+	tableText:{
+		fontFamily: 'Roboto_medium',
+		fontSize: 15,
 		color: '#FFFF00',
 	}, 
 	outputText:{

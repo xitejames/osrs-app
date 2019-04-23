@@ -20,6 +20,7 @@
     "react-addons-shallow-compare": "^15.6.2",
     "react-native": "^0.57.8",
     "react-native-fence-html": "^1.0.6",
+    "react-native-single-image-zoom-viewer": "^1.0.7",
     "react-native-svg-charts": "^5.2.0",
     "react-native-svg-uri": "^1.2.3",
     "react-navigation": "^3.1.5"

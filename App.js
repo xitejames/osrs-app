@@ -16,8 +16,10 @@ export default class App extends Component {
     
     async componentWillMount() {      
         await Expo.Font.loadAsync({
-            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf')
-        })
+            Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+            Roboto: require('native-base/Fonts/Roboto.ttf')
+
+          })
         this.setState({ fontLoaded: true, isReady: true })
     }
     
