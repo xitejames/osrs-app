@@ -12,12 +12,15 @@ import {
   FlatList,
   View, 
   Text, 
-  ActivityIndicator 
+  ActivityIndicator,
+  TouchableOpacity,
+  Linking
 } from 'react-native'
 import { PageFooter } from '../../Components/Footer'
 import { navigationOptions } from '../../Components/Headers/header'
 import styles from '../../Styles/style'
 import quests from '../../api/quests'
+import wiki from '../../api/wiki'
 
 export default class QuestScreen extends Component {
 	static navigationOptions = navigationOptions
@@ -46,10 +49,14 @@ export default class QuestScreen extends Component {
 
     if(!loaded){
       return(
-        <View>
-          <Text>Loading</Text>
-          <ActivityIndicator />
-        </View>
+        <Container style={styles.container} >
+          <Content style={styles.content}>
+            <ActivityIndicator style={styles.indicator} 							
+            size={'large'}
+						color="black" 
+            />
+          </Content>
+        </Container>
       );
     }
 
@@ -66,24 +73,23 @@ export default class QuestScreen extends Component {
         >
         </View>
       </Header>
-
-      <Item style={{ height: 20, paddingHorizontal: 10, }} stackedLabel={true}>
-        <Row>  
-          <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
-            <Text style={styles.tableText}>Name</Text>
-          </Col>      
-          <Col style={{ width: '25%', alignItems: 'center', paddingLeft: 3 }} >
-            <Text style={styles.tableText}>Difficulty</Text>
-          </Col>     
-          <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
-            <Text style={styles.tableText}>Length</Text>
-          </Col>     
-          <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
-            <Text style={styles.tableText}>Points</Text>
-          </Col>     
-        </Row>    
-      </Item>
-
+        <Item style={{ height: 20, paddingHorizontal: 10, }} stackedLabel={true}>
+          <Row>  
+            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>Name</Text>
+            </Col>      
+            <Col style={{ width: '25%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>Difficulty</Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>Length</Text>
+            </Col>     
+            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+              <Text style={styles.tableText}>Points</Text>
+            </Col>     
+          </Row>    
+        </Item>
+      
       <Content style={styles.content}>
       <Row>  
         <Col style={{ alignItems: 'center', paddingBottom: 20 }} >
@@ -93,24 +99,26 @@ export default class QuestScreen extends Component {
 
       <FlatList
       data={f2pQuestList}            
-      extraData={this.state}             
       renderItem={({ item }) => (   
-        <Item style={{ marginBottom: 5 }} stackedLabel={true}>
-          <Row>  
-            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
-              <Text style={styles.tableText}>{`${item.Name}`} </Text>
-            </Col>      
-            <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
-              <Text style={styles.tableText}>{`${item.Difficulty}`} </Text>
-            </Col>     
-            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
-              <Text style={styles.tableText}>{`${item.Length}`} </Text>
-            </Col>     
-            <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
-              <Text style={styles.tableText}>{`${item.QP}`} </Text>
-            </Col>     
-          </Row>    
-        </Item>
+          <Item style={{ marginBottom: 5 }} stackedLabel={true}>
+              <Row>  
+                <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+                <TouchableOpacity onPress={()=>{Linking.openURL(wiki.parseForWiki(item.Name))}}>
+                  <Text style={styles.tableText}>{`${item.Name}`} </Text>
+                </TouchableOpacity>
+                </Col>      
+                <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+                  <Text style={styles.tableText}>{`${item.Difficulty}`} </Text>
+                </Col>     
+                <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+                  <Text style={styles.tableText}>{`${item.Length}`} </Text>
+                </Col>     
+                <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
+                  <Text style={styles.tableText}>{`${item.QP}`} </Text>
+                </Col>     
+              </Row>   
+          </Item>
+
           
           )}  
           keyExtractor={item => item.Name}
@@ -130,7 +138,9 @@ export default class QuestScreen extends Component {
         <Item style={{ marginBottom: 5 }} stackedLabel={true}>
           <Row>  
             <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
+            <TouchableOpacity onPress={()=>{Linking.openURL(wiki.parseForWiki(item.Name))}}>
               <Text style={styles.tableText}>{`${item.Name}`} </Text>
+            </TouchableOpacity>
             </Col>      
             <Col style={{ width: '30%', alignItems: 'center', paddingLeft: 3 }} >
               <Text style={styles.tableText}>{`${item.Difficulty}`} </Text>
@@ -141,9 +151,8 @@ export default class QuestScreen extends Component {
             <Col style={{ width: '20%', alignItems: 'center', paddingLeft: 3 }} >
               <Text style={styles.tableText}>{`${item.QP}`} </Text>
             </Col>     
-          </Row>    
+          </Row>      
         </Item>
-          
           )}  
           keyExtractor={item => item.Name}
       />

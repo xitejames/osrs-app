@@ -148,13 +148,18 @@ export default class CookingScreen extends React.Component {
                         <Row style={{ margin: 10 }}>
                             <Col>
                                 <Text style={styles.text}>Name: {`${item.Name }`} </Text>
-                                <Text style={styles.text}>Level to burn: {`${item.Level }`}</Text>
+                                <Text style={styles.text}>Level to build: {`${item.Level }`}</Text>
                                 <Text style={styles.text}>Experience: {`${item.XP }`}</Text>
                                 <Text style={styles.text}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
                             </Col>
                             <Col>
-                            </Col>
-                        </Row>                
+                                <Image 
+                                resizeMode={'contain'}
+                                style={styles.itemImage}
+                                source={item.Pic} 
+                                />
+                            </Col>   
+                        </Row>              
                         
                         )}  
                         keyExtractor={item => item.Name}

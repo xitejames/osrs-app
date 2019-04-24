@@ -9,10 +9,10 @@ class ConstructionExperience extends React.Component {
 
         this.experience = {
             Tasks: [
-                { Name: 'Plank', Level: 1, XP: 29 },
-                { Name: 'Oak plank', Level: 1, XP: 60 },
-                { Name: 'Teak plank', Level: 1, XP: 90 },
-                { Name: 'Mahogany plank', Level: 1, XP: 140 },
+                { Pic: require('../../../assets/Images/item_Icons/construction/Plank.png'), Name: 'Plank', Level: 1, XP: 29 },
+                { Pic: require('../../../assets/Images/item_Icons/construction/Oak_plank.png'), Name: 'Oak plank', Level: 1, XP: 60 },
+                { Pic: require('../../../assets/Images/item_Icons/construction/Teak_plank.png'), Name: 'Teak plank', Level: 1, XP: 90 },
+                { Pic: require('../../../assets/Images/item_Icons/construction/Mahogany_plank.png'), Name: 'Mahogany plank', Level: 1, XP: 140 },
                 ]
         };
     }

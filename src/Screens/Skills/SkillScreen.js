@@ -26,7 +26,7 @@ import { navigationOptions } from '../../Components/Headers/header'
             super(props);
             this.state = {
                 stats: {},
-                username: 'Xitejames'
+                username: ''
             };
 			this.stats = cUser.resetCurrent()
 			cUser.setStats(cUser.resetCurrent())
@@ -96,7 +96,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 		  	<Row >				
 				<View style={styles.searchInputContainer}>
 					<Input
-						placeholder="Search for a item..."
+						placeholder="Search for a user..."
 						value={this.state.username}
 						onChangeText={(username) => {
 							this.setState({ username });
@@ -117,7 +117,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[1].Rank}
 							currentLevel={this.stats.playerStats[1].Level}
 							currentXP={this.stats.playerStats[1].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[1].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[1].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -129,7 +129,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[4].Rank}
 						currentLevel={this.stats.playerStats[4].Level}
 						currentXP={this.stats.playerStats[4].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[4].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[4].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -141,7 +141,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[15].Rank}
 						currentLevel={this.stats.playerStats[15].Level}
 						currentXP={this.stats.playerStats[15].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[15].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[15].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -155,7 +155,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[3].Rank}
 							currentLevel={this.stats.playerStats[3].Level}
 							currentXP={this.stats.playerStats[3].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[3].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[3].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -167,7 +167,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[17].Rank}
 						currentLevel={this.stats.playerStats[17].Level}
 						currentXP={this.stats.playerStats[17].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[17].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[17].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -179,7 +179,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[14].Rank}
 						currentLevel={this.stats.playerStats[14].Level}
 						currentXP={this.stats.playerStats[14].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[14].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[14].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -193,7 +193,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[2].Rank}
 							currentLevel={this.stats.playerStats[2].Level}
 							currentXP={this.stats.playerStats[2].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[2].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[2].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -205,7 +205,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[16].Rank}
 						currentLevel={this.stats.playerStats[16].Level}
 						currentXP={this.stats.playerStats[16].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[16].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[16].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -217,7 +217,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[11].Rank}
 						currentLevel={this.stats.playerStats[11].Level}
 						currentXP={this.stats.playerStats[11].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[11].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[11].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -231,7 +231,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[5].Rank}
 							currentLevel={this.stats.playerStats[5].Level}
 							currentXP={this.stats.playerStats[5].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[5].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[5].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -243,7 +243,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[19].Rank}
 						currentLevel={this.stats.playerStats[19].Level}
 						currentXP={this.stats.playerStats[19].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -255,7 +255,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[8].Rank}
 						currentLevel={this.stats.playerStats[8].Level}
 						currentXP={this.stats.playerStats[8].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[8].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[8].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -269,7 +269,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[6].Rank}
 							currentLevel={this.stats.playerStats[6].Level}
 							currentXP={this.stats.playerStats[6].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[6].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[6].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -281,19 +281,19 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[13].Rank}
 						currentLevel={this.stats.playerStats[13].Level}
 						currentXP={this.stats.playerStats[13].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[13].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[13].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
 				<Col>
 				<TouchableOpacity style={styles.statItem}
-				onPress={() => this.props.navigation.navigate(this.stats.playerStats[7].Name)}>
+				onPress={() => this.props.navigation.navigate(this.stats.playerStats[12].Name)}>
 					<StatIcon							
-						currentName={this.stats.playerStats[7].Name}
-						currentRank={this.stats.playerStats[7].Rank}
-						currentLevel={this.stats.playerStats[7].Level}
-						currentXP={this.stats.playerStats[7].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
+						currentName={this.stats.playerStats[12].Name}
+						currentRank={this.stats.playerStats[12].Rank}
+						currentLevel={this.stats.playerStats[12].Level}
+						currentXP={this.stats.playerStats[12].XP}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[12].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -307,7 +307,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[7].Rank}
 							currentLevel={this.stats.playerStats[7].Level}
 							currentXP={this.stats.playerStats[7].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[7].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -319,7 +319,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[10].Rank}
 						currentLevel={this.stats.playerStats[10].Level}
 						currentXP={this.stats.playerStats[10].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[10].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[10].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -331,7 +331,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[9].Rank}
 						currentLevel={this.stats.playerStats[9].Level}
 						currentXP={this.stats.playerStats[9].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[9].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[9].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -345,7 +345,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[21].Rank}
 							currentLevel={this.stats.playerStats[21].Level}
 							currentXP={this.stats.playerStats[21].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[21].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[21].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -357,7 +357,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[19].Rank}
 						currentLevel={this.stats.playerStats[19].Level}
 						currentXP={this.stats.playerStats[19].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[19].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -369,7 +369,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[20].Rank}
 						currentLevel={this.stats.playerStats[20].Level}
 						currentXP={this.stats.playerStats[20].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[20].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[20].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -383,7 +383,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 							currentRank={this.stats.playerStats[22].Rank}
 							currentLevel={this.stats.playerStats[22].Level}
 							currentXP={this.stats.playerStats[22].XP}
-							currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[22].Name +'.png'}
+							currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[22].Name +'.png'}
 						/>
 					</TouchableOpacity>
 				</Col>
@@ -395,7 +395,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[23].Rank}
 						currentLevel={this.stats.playerStats[23].Level}
 						currentXP={this.stats.playerStats[23].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[23].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[23].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>
@@ -407,7 +407,7 @@ import { navigationOptions } from '../../Components/Headers/header'
 						currentRank={this.stats.playerStats[0].Rank}
 						currentLevel={this.stats.playerStats[0].Level}
 						currentXP={this.stats.playerStats[0].XP}
-						currentImage={'../../../assets/Skill_Icons/'+ this.stats.playerStats[0].Name +'.png'}
+						currentImage={'../../../assets/Images/Skill_Icons/'+ this.stats.playerStats[0].Name +'.png'}
 					/>
 				</TouchableOpacity>
 				</Col>

@@ -11,7 +11,6 @@ import {
   View, 
   Text, 
   ActivityIndicator,
-  Dimensions,
 } from 'react-native'
 import * as Expo from "expo";
 import { PageFooter } from '../Components/Footer'
@@ -41,24 +40,29 @@ export default class HomeScreen extends Component {
   }
 
   render() {
-    const { width, height } = Dimensions.get('window')
-    const maxWidth = width / 3.5
-    const maxHeight = height / 4.5
     const { fontLoaded, articles, loaded } = this.state
     if(!loaded){
       return(
-        <View>
-          <Text>Loading</Text>
-          <ActivityIndicator />
-        </View>
+        <Container style={styles.container} >
+          <Content style={styles.content}>
+            <ActivityIndicator style={styles.indicator}
+            size={'large'}
+            color="black"
+            />
+          </Content>
+        </Container>
       );
     }
     if(!fontLoaded){
       return(
-        <View>
-          <Text>Loading Font</Text>
-          <ActivityIndicator />
-        </View>
+        <Container style={styles.container} >
+          <Content style={styles.content}>
+            <ActivityIndicator style={styles.indicator} 
+            size={'large'}
+						color="black"
+            />
+          </Content>
+        </Container>
       );
     }
 
@@ -73,15 +77,13 @@ export default class HomeScreen extends Component {
         <View style={styles.header}>
         </View>
       </Header>
-    <Content style={styles.content}>
-      <Row style={{ marginTop: 15, marginBottom: 15 }}>
-        <Col>
-          <Text style={styles.h1Text}>
-            Recent News
-          </Text> 
+    <Content style={styles.content}  scrollEnabled={true}>
+      <Row>
+        <Text style={styles.h1Text}> Recent News </Text> 
+      </Row>
+      <Row style={{ paddingTop: 15, paddingBottom: 15 }}>
           {articles !== undefined && 
           <HomescreenCard articles={articles} />}
-        </Col>
       </Row>
       </Content>
       <Footer>

@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { Content, Footer, Container, Header } from "native-base";
-import { View, Text, ActivityIndicator } from 'react-native'
+import { 
+  Content, 
+  Footer, 
+  Container, 
+  Header 
+} from "native-base";
+import { 
+  View, 
+  Text, 
+  ActivityIndicator 
+} from 'react-native'
 import { PageFooter } from '../Components/Footer'
 import { navigationOptions } from '../Components/Headers/header'
 import styles from '../Styles/style'
@@ -23,10 +32,14 @@ export default class MapScreen extends Component {
     const { loaded} = this.state
     if(!loaded){
       return(
-        <View>
-          <Text>Loading</Text>
-          <ActivityIndicator />
-        </View>
+        <Container style={styles.container} >
+          <Content style={styles.content}>
+            <ActivityIndicator style={styles.indicator} 							
+            size={'large'}
+            color="black" 
+            />
+          </Content>
+        </Container>
       );
     }
 

@@ -2,7 +2,6 @@ import cio from 'cheerio-without-node-native';
 
 const f2purl = "https://oldschool.runescape.wiki/w/Quests/Free-to-play"
 const p2purl = "https://oldschool.runescape.wiki/w/Quests/Members"
-const allQuest = "https://oldschool.runescape.wiki/w/Quests/List"
 
 class Quests {
 
@@ -43,6 +42,7 @@ class Quests {
         return array
     };   
     
+
     async findP2pQuests(){
         let url = p2purl
         let array = []

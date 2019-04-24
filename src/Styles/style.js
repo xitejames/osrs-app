@@ -4,6 +4,8 @@ import { StyleSheet, Dimensions} from 'react-native';
 const { width, height } = Dimensions.get('window')
 const maxWidth = width / 3.5
 const maxHeight = height / 4.5
+const halfHeight = height / 2
+const halfWidth = width / 2
 
 export default StyleSheet.create({
 
@@ -16,7 +18,13 @@ export default StyleSheet.create({
 	content: {
 		paddingTop: 5,
 		paddingHorizontal: 10,
-        flexDirection: 'column',
+	},
+	indicator: {
+		top: halfHeight,
+	},
+	map:{
+		height: height,
+		width: width
 	},
 	header:{
 		position: 'absolute',
@@ -53,6 +61,11 @@ export default StyleSheet.create({
 	imageIcon:{
 		width: 30, 
 		height: 30 
+	},
+	itemImage:{
+		height: 85,
+		width: 100,
+		left: 20		
 	},
     statBar: {
 		height: 110,

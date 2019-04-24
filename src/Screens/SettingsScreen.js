@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Content, Footer, Container, Row, Col, Button, Header } from "native-base";
-import { StyleSheet, View, Text, ActivityIndicator,Dimensions } from 'react-native'
+import { Content, Footer, Container, Header } from "native-base";
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native'
 import { PageFooter } from '../Components/Footer'
 import { navigationOptions } from '../Components/Headers/header'
 import styles from '../Styles/style'
@@ -19,16 +19,18 @@ export default class SettingsScreen extends Component {
   }
 
   render() {
-    const { width, height } = Dimensions.get('window')
-    const maxWidth = width / 3.5
-    const maxHeight = height / 4.5
     const { loaded } = this.state
+    
     if(!loaded){
       return(
-        <View>
-          <Text>Loading</Text>
-          <ActivityIndicator />
-        </View>
+        <Container style={styles.container} >
+          <Content style={styles.content}>
+            <ActivityIndicator style={styles.indicator} 
+            size={'large'}
+            color="black"
+            />
+          </Content>
+        </Container>
       );
     }
 

@@ -3,7 +3,7 @@ import {
     View,
     Image,
 	TouchableOpacity,
-	TextInput,
+	Linking,
 	ActivityIndicator,
 	Picker,
 } from "react-native";
@@ -20,6 +20,7 @@ import {
   } from 'native-base'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import itemDB from '../../api/itemDB'
+import wiki from '../../api/wiki'
 import Chart from '../../Components/Chart/Chart'
 import styles from '../../Styles/style'
 import { PageFooter } from '../../Components/Footer'
@@ -135,10 +136,13 @@ export default class ExchangeScreen extends Component {
 						<Label style={styles.text} >
 						Item Image
 						</Label>
-						<Image
-						style={{width: 50, height: 50}}
-						source={{uri: itemDB.getPic()}}
-						/>
+						<TouchableOpacity onPress={()=>{Linking.openURL(wiki.parseForWiki(itemDB.getItemName()))}}>
+							<Image
+							style={{width: 50, height: 50}}
+							source={{uri: itemDB.getPic()}}
+							/>
+						</TouchableOpacity>
+
 					</Item>
 					<Item stackedLabel={true} style={{ marginLeft: 0, marginTop: 20 }}>
 						<Label style={styles.text} >
@@ -156,7 +160,8 @@ export default class ExchangeScreen extends Component {
 					{ this.state.searching && 
 						<ActivityIndicator 
 							style={{ paddingTop: 50 }} 
-							size={"large"}	
+							size={'large'}
+							color="black"
 						/>
 					}
 

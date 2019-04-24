@@ -43,15 +43,5 @@ export const navigationOptions = ({ navigation }) => {
         </Button>
       </View>
     ),
-    headerRight: (
-      <View>
-      <TouchableOpacity style={{ alignItems: 'center',	justifyContent: 'center', paddingRight:15 }}
-        onPress={() => navigation.navigate('Settings')}>			
-        <Image 
-        style={styles.imageIcon}
-        source={require('../../../assets/Options.png')} />
-      </TouchableOpacity>
-      </View>
-    ),
   })
 }

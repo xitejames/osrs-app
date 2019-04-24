@@ -144,12 +144,22 @@ export default class SmithingScreen extends React.Component {
                         data={this.state.itemCurrent}            
                         extraData={this.state}             
                         renderItem={({ item }) => (                           
-                        <View style={{ margin: 10 }}>
+                        <Row style={{ margin: 10 }}>
+                            <Col>
                                 <Text style={styles.text}>Name: {`${item.Name }`} </Text>
                                 <Text style={styles.text}>Level to burn: {`${item.Level }`}</Text>
                                 <Text style={styles.text}>Experience: {`${item.XP }`}</Text>
                                 <Text style={styles.text}>Actions Left: {Levels.findActionsToLevel( Levels.findSkillXpByName(`${item.Name }`), this.state.currentExperience ,this.state.experianceToGet)}</Text>                        
-                        </View>                
+                            </Col>
+                            <Col>
+                                <Image 
+                                resizeMode={'contain'}
+                                style={styles.itemImage}
+                                source={item.Pic} 
+                                />
+                            </Col>   
+                        </Row>  
+           
                         
                         )}  
                         keyExtractor={item => item.Name}
