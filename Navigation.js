@@ -27,7 +27,8 @@ import {
 import {
   HomeScreen,
   MapScreen,
-  SettingsScreen
+  SettingsScreen,
+  SearchScreen
 } from './src/Screens'
 import {QuestScreen} from './src/Screens/Quests'
 import {ExchangeScreen} from './src/Screens/Exchange'
@@ -55,7 +56,8 @@ const RunescapeApp = createStackNavigator({
   Thieving: ThievingScreen,
   Woodcutting: WoodcuttingScreen,
   Settings: SettingsScreen,
-  WorldMap: MapScreen
+  WorldMap: MapScreen,
+  Search: SearchScreen
 
 });
 

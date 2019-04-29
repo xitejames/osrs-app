@@ -52,6 +52,12 @@ export default StyleSheet.create({
 		fontSize: 16,
 		color: '#FFFF00'
 	},
+	searchInputSpecial:{
+		width: '100%',
+		fontFamily: 'Roboto_medium',
+		fontSize: 30,
+		color: '#FFFF00'
+	},
 	h1Text:{
 		fontSize: 18,
 		textDecorationLine: 'underline',

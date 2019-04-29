@@ -43,5 +43,21 @@ export const navigationOptions = ({ navigation }) => {
         </Button>
       </View>
     ),
+    headerRight: (
+      <View>
+        <Button onPress={() => navigation.navigate('Search')} transparent
+          accessible={true}
+          accessibilityLabel="routeName"
+          accessibilityHint={"Navigate to the routeName screen"}
+          accessibilityRole="button"
+          accessibilityTraits="button"
+        >
+        <Image 
+        resizeMode={'contain'}
+        style={styles.imageIcon}
+        source={require('../../../assets/Images/Search.png')} />
+        </Button>
+      </View>
+    ),
   })
 }
